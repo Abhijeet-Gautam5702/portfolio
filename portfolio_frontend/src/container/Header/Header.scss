@@ -114,8 +114,13 @@
         // outline:2px solid blue;
         // position:relative;
         z-index:1;
+        @media screen and (max-width:425px){
+          width:90%;
+          margin:auto;
+        }
     }
     .overlay_circle{
+        display:none;
         position:absolute;
         z-index:0;
         top:0;
