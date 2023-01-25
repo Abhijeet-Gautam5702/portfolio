@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./About.scss";
 import {images } from '../../constants'
+import { AppWrap } from "../../Wrapper";
 
 const abouts = [
   {
@@ -20,7 +21,7 @@ const abouts = [
     imgUrl: images.about03,
   },
 ];
-export default function About() {
+function About() {
   return (
     <>
       <h2 className="head-text">
@@ -50,3 +51,5 @@ export default function About() {
     </>
   );
 }
+// export default AppWrap(About,'about');
+export default About;
