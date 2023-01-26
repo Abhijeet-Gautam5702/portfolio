@@ -149,6 +149,7 @@
 }
 
 .app__navigation {
+  // outline:2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -157,8 +158,8 @@
   padding: 1rem;
 
   .app__navigation-dot {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: #cbcbcb;
     margin: 0.5rem;
@@ -176,7 +177,7 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .app__navigation,
   .app__social {
     display: none;

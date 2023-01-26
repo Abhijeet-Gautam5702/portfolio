@@ -51,5 +51,5 @@ function About() {
     </>
   );
 }
-// export default AppWrap(About,'about');
-export default About;
+export default AppWrap(About,'about');
+// export default About;

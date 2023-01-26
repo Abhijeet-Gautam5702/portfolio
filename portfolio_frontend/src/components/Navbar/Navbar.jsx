@@ -4,19 +4,19 @@ import { motion } from "framer-motion";
 import { images } from "../../constants";
 import "./Navbar.scss";
 
+const navElements = ["home", "about", "work", "skills", "contact"].map(
+  (item) => {
+    return (
+      <li className="app__flex p-text" key={item}>
+        <div />
+        <a href={`#${item}`}>{item}</a>
+      </li>
+    );
+  }
+);
+
 export default function Navbar() {
   const [toggle, setToggle] = useState(false);
-
-  const navElements = ["home", "work", "skills", "contact", "about"].map(
-    (item) => {
-      return (
-        <li className="app__flex p-text" key={item}>
-          <div />
-          <a href={`#${item}`}>{item}</a>
-        </li>
-      );
-    }
-  );
 
   return (
     <nav className="app__navbar">
@@ -33,7 +33,7 @@ export default function Navbar() {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {["home", "work", "skills", "contact", "about"].map((item) => {
+              {["home", "about", "work", "skills", "contact"].map((item) => {
                 return (
                   <li key={`menu-${item}`}>
                     <a onClick={() => setToggle(false)} href={`#${item}`}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationDots, SocialMedia } from "../components";
 
- function AppWrap(Component, idName, classNames) {
+function AppWrap(Component, idName, classNames) {
   return function HOC() {
     return (
       <div id={idName} className={`app__container ${classNames}`}>
@@ -10,10 +10,12 @@ import { NavigationDots, SocialMedia } from "../components";
         <div className="app__wrapper app__flex">
           <Component />
         </div>
-        <NavigationDots active={idName} />
+        <div className="app__navigation">
+          <NavigationDots active={idName} />
+        </div>
       </div>
     );
   };
 }
 
-export default AppWrap
+export default AppWrap;
