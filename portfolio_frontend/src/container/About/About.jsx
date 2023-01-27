@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import "./About.scss";
 import {images } from '../../constants'
 import { AppWrap } from "../../Wrapper";
+import {client,urlFor} from '../../client'
+
 
 const abouts = [
   {
@@ -21,7 +23,20 @@ const abouts = [
     imgUrl: images.about03,
   },
 ];
+
+
+
+
 function About() {
+
+  // const [abouts,setAbouts] = useState([])
+
+  // useEffect(()=>{
+  //   const query = '*[_type == "abouts"]';
+  //   client.fetch(query)
+  //     .then(data => setAbouts(data))
+  // },[])
+
   return (
     <>
       <h2 className="head-text">
