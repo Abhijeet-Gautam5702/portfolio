@@ -44,13 +44,6 @@ function Header() {
         className="app__header-img"
       >
         <img src={images.profile2} alt="profile_bg" />
-        {/* <motion.img
-          whileInView={{ scale: [0, 1] }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          src={images.circle}
-          alt="profile_circle"
-          className="overlay_circle"
-        /> */}
       </motion.div>
 
       <motion.div
@@ -58,7 +51,7 @@ function Header() {
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[images.sass, images.redux, images.flutter].map((circle, index) => {
+        {[images.sass2, images.react, images.javascript].map((circle, index) => {
           return (
             <div className="circle-cmp app__flex" key={`circle-${index}`}>
               <img src={circle} alt="circle" />

@@ -5,36 +5,32 @@ import { images } from "../../constants";
 
 const skills = [
   {
-    logo: images.javascript,
-    title: "Javascript",
-  },
-  {
-    logo: images.cpp,
-    title: "C++",
+    logo: images.html,
+    title: "HTML5",
   },
   {
     logo: images.css,
     title: "CSS",
   },
   {
-    logo: images.git,
-    title: "Git",
+    logo: images.sass2,
+    title: "Saas",
   },
   {
-    logo: images.html,
-    title: "HTML5",
+    logo: images.javascript,
+    title: "Javascript",
   },
   {
     logo: images.react,
     title: "React",
   },
   {
-    logo: images.sass,
-    title: "Saas",
+    logo: images.cpp,
+    title: "C++",
   },
   {
-    logo: images.python,
-    title: "Python",
+    logo: images.git,
+    title: "Git",
   },
 ];
 function Skills() {
@@ -47,7 +43,7 @@ function Skills() {
       <div className="app__flex app__skills-container">
         {skills.map((skill, index) => {
           return (
-            <div className="app__skills-item">
+            <div className="app__skills-item" key={index}>
               <div className="app__skills-img-container">
                 <img src={skill.logo} alt="skill_logo" />
               </div>

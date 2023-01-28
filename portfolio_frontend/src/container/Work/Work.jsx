@@ -10,19 +10,34 @@ const tempUrl = "https://github.com/Abhijeet-Gautam5702";
 
 const projects = [
   {
-    title: "Interactive Comments Section",
-    url: tempUrl,
-    img: images.about01,
+    title: "Comments Section",
+    url: "https://github.com/Abhijeet-Gautam5702/interactive-comments-section",
+    img: images.commentsection,
   },
   {
-    title: "Job Portal UI",
-    url: tempUrl,
-    img: images.about02,
+    title: "Job Board",
+    url: "https://github.com/Abhijeet-Gautam5702/job-listing-portal",
+    img: images.jobportal,
   },
   {
-    title: "Codechef Archive Chrome Extension",
-    url: tempUrl,
-    img: images.about03,
+    title: "Codechef Archive",
+    url: "https://github.com/Abhijeet-Gautam5702/codechef-archive",
+    img: images.ccarchive,
+  },
+  {
+    title: "Landing Page",
+    url: "https://github.com/Abhijeet-Gautam5702/satvik-tourism",
+    img: images.satviktourism,
+  },
+  {
+    title: "My Notes",
+    url: "https://github.com/Abhijeet-Gautam5702/my-notes-app",
+    img: images.mynotes,
+  },
+  {
+    title: "Gamify Login",
+    url: "https://github.com/Abhijeet-Gautam5702/multistep-form",
+    img: images.loginpage,
   },
 ];
 
@@ -40,16 +55,21 @@ function Work() {
       >
         {projects.map((project, index) => {
           return (
-            <a href={project.url} className="anchor" target="_blank">
+            <a
+              href={project.url}
+              className="anchor"
+              target="_blank"
+              key={index}
+            >
               <motion.div
-                whileInView={{y:[40,0],opacity:[0,1]}}
+                whileInView={{ y: [40, 0], opacity: [0, 1] }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 key={index}
                 className="app__work-portfolio-item"
               >
                 <img src={project.img} alt="project_img" />
-                <h2 className="bold-text">{project.title}</h2>
+                <h2>{project.title}</h2>
               </motion.div>
             </a>
           );

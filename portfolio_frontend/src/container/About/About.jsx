@@ -8,17 +8,17 @@ import { AppWrap } from "../../Wrapper";
 const abouts = [
   {
     title: "Web Developer",
-    description: "I am a fresher web developer",
+    description: "I love building chrome extensions and landing pages",
     imgUrl: images.about01,
   },
   {
     title: "Web Designer",
-    description: "I am a fresher web developer",
+    description: "I am proficient in designing visually appealing web designs",
     imgUrl: images.about02,
   },
   {
-    title: "Web Analyst",
-    description: "I am a fresher web developer",
+    title: "Problem Solver",
+    description: "I love solving problems related to Data Structures and Algorithms",
     imgUrl: images.about03,
   },
 ];

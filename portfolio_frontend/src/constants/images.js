@@ -15,6 +15,7 @@ import python from "../assets/python.png";
 import react from "../assets/react.png";
 import redux from "../assets/redux.png";
 import sass from "../assets/sass.png";
+import sass2 from "../assets/sass2.png";
 import typescript from "../assets/typescript.png";
 import vue from "../assets/vue.png";
 
@@ -37,7 +38,20 @@ import nb from "../assets/nb.png";
 import skype from "../assets/skype.png";
 import spotify from "../assets/spotify.png";
 
+import jobportal from "../assets/jobportal.png";
+import satviktourism from "../assets/satviktourism.png";
+import ccarchive from "../assets/ccarchive.png";
+import commentsection from "../assets/commentsection.png";
+import loginpage from "../assets/loginpage.png";
+import mynotes from "../assets/mynotes.png";
+
 export default {
+  mynotes,
+  loginpage,
+  satviktourism,
+  ccarchive,
+  commentsection,
+  jobportal,
   email,
   mobile,
   api,
@@ -55,6 +69,7 @@ export default {
   react,
   redux,
   sass,
+  sass2,
   typescript,
   vue,
   about01,

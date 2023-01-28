@@ -21,14 +21,18 @@ export default function Navbar() {
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo" />
+        {/* <img src={images.logo} alt="logo" /> */}
+        <h2>
+          <span>abhi</span>
+          <span>jeet</span>
+        </h2>
       </div>
       <ul className="app__navbar-links">{navElements}</ul>
       <div className="app__navbar-menu">
         <HiMenuAlt4 onClick={() => setToggle(true)} />
         {toggle && (
           <motion.div
-            whileInView={{ x: ['70vw', '0vw'] }}
+            whileInView={{ x: ["70vw", "0vw"] }}
             transition={{ duration: 0.85, ease: "easeOut" }}
           >
             <HiX onClick={() => setToggle(false)} />
