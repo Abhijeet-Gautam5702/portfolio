@@ -44,13 +44,13 @@ function Header() {
         className="app__header-img"
       >
         <img src={images.profile2} alt="profile_bg" />
-        <motion.img
+        {/* <motion.img
           whileInView={{ scale: [0, 1] }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
           src={images.circle}
           alt="profile_circle"
           className="overlay_circle"
-        />
+        /> */}
       </motion.div>
 
       <motion.div
