@@ -1,22 +1,18 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+const firebaseConfig = {
+  apiKey: "AIzaSyCKi8Wv1B58Nb4yX1D7Fnd3EQ0eOXLbp9E",
+  authDomain: "personal-portfolio-21a17.firebaseapp.com",
+  projectId: "personal-portfolio-21a17",
+  storageBucket: "personal-portfolio-21a17.appspot.com",
+  messagingSenderId: "163174147468",
+  appId: "1:163174147468:web:0a9214035917f2fa7ee2a9",
+};
 
-const pId = '5uv3n8x8'
-const token='skAnj41vlEMMAsALe5vzNQa7RIvPC94r31NHuOvYwHJPKJRbzERUcfo1MlPlSoRZ5LpmIN1luDVANe8IROCJVawrPnoaiVOayiDhsIutOdEIU1UotLQRbtnjfxlklNXDJLr3Ffh3ZxZZunxUBv0rJllr6bbCO0Laz7vkwnkbAiGsZkrrkKts'
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-const client = sanityClient({
-  // projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
-  projectId: pId,
-  dataset: "production",
-  apiVersion: "2023-01-27",
-  useCdn: true,
-  // token: process.env.REACT_APP_SANITY_PROJECT_TOKEN,
-  token: token,
-});
+const collectionRef = collection(db, "messages");
 
-const builder = imageUrlBuilder(client);
-
-const urlFor = (source) => builder.image(source);
-
-export { client, urlFor };
+export { db, collectionRef };

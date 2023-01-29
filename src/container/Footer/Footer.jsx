@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./Footer.scss";
 import { images } from "../../constants";
 import { AppWrap } from "../../Wrapper";
+import { motion } from "framer-motion";
+
+import { addDoc } from "firebase/firestore";
+import { db, collectionRef } from "../../client";
 
 function Footer() {
   const [formData, setFormData] = useState({
@@ -9,8 +13,9 @@ function Footer() {
     email: "",
     message: "",
   });
+
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   function handleChangeInput(e) {
     const { name, type, value } = e.target;
@@ -22,9 +27,33 @@ function Footer() {
     });
   }
 
-  function handleSubmit() {
-    setIsLoading(true);
-    setIsSubmitted(true);
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    //form validation (using regex)
+    const { name, email, message } = formData;
+    let msg = message;
+    if (!name || !email || !message) {
+      window.alert("One or more fields are empty!");
+    } else if (/\d/.test(name)) {
+      window.alert("Name should contain alphabets only");
+    } else if (!msg.replace(/\s/g, "").length) {
+      window.alert("You have not typed any message for me!");
+    } else if (
+      !email.match(
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      )
+    ) {
+      window.alert("Please provide a valid email");
+    } else {
+      //submit the data to the database
+      setIsSubmitted(true);
+      addDoc(collectionRef, {
+        ...formData,
+      });
+
+      setFormData({ name: "", email: "", message: "" });
+    }
   }
 
   return (
@@ -50,47 +79,58 @@ function Footer() {
         </div>
 
         {!isSubmitted ? (
-          <div className="app__footer-form app__flex">
+          <form className="app__footer-form app__flex">
             <div className="app__flex">
               <input
                 name="name"
-                className="p-text"
+                className="p-text form-element"
                 type="text"
                 placeholder="Your Name"
                 onChange={handleChangeInput}
                 value={formData.name}
+                required
               />
             </div>
             <div className="app__flex">
               <input
                 name="email"
-                className="p-text"
+                className="p-text form-element"
                 type="email"
                 placeholder="Your Email"
                 onChange={handleChangeInput}
                 value={formData.email}
+                required
               />
             </div>
             <div>
               <textarea
-                className="p-text"
+                className="p-text form-element"
                 name="message"
                 onChange={handleChangeInput}
                 value={formData.message}
                 placeholder="Your Message"
+                required
               />
             </div>
             <button className="p-text" onClick={handleSubmit}>
-              {isLoading ? "Sending" : "Send Message"}
+              Send Message
             </button>
-          </div>
+          </form>
         ) : (
-          <div className="form-submit-success-msg">
+          <motion.div
+            whileInView={{ opacity: [0, 1] }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+              delayChildren: 0.5,
+            }}
+            className="form-submit-success-msg"
+          >
             <h4 className="head-text">
               <span> Thank you </span>
               <br /> for getting in touch!
             </h4>
-          </div>
+          </motion.div>
         )}
       </div>
     </>
