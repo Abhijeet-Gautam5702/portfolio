@@ -38,7 +38,7 @@ Start the server
 
 ## Tech Stack
 
-**Frontend:** HTML, CSS, Sass, JavaScript, React
+**Frontend:** HTML, CSS, Sass, JavaScript, React  
 **Frontend framework:** Framer-motion  
 **Backend:** Firebase
 
