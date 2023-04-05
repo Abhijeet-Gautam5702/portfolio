@@ -21,6 +21,8 @@
 
 .app__footer-cardList {
   // outline: 2px solid red;
+  margin: auto;
+  max-width: 500px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

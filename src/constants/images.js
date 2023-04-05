@@ -44,8 +44,10 @@ import ccarchive from "../assets/ccarchive.png";
 import commentsection from "../assets/commentsection.png";
 import loginpage from "../assets/loginpage.png";
 import mynotes from "../assets/mynotes.png";
+import restro from "../assets/restro.png";
 
 export default {
+  restro,
   mynotes,
   loginpage,
   satviktourism,

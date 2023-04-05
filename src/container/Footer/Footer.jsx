@@ -7,7 +7,11 @@ import { motion } from "framer-motion";
 import { addDoc } from "firebase/firestore";
 import { db, collectionRef } from "../../client";
 
+import emailjs from "@emailjs/browser";
+import { useRef } from "react";
+
 function Footer() {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,6 +57,20 @@ function Footer() {
       });
 
       setFormData({ name: "", email: "", message: "" });
+
+      emailjs
+        .sendForm(
+          "service_ob4ngbr",
+          "template_opjmyig",
+          form.current,
+          "vH49mnwVr8Fb4WhYM"
+        )
+        .then(
+          (result) => {},
+          (error) => {
+            alert("Unfortunately, your message could not be delivered.");
+          }
+        );
     }
   }
 
@@ -61,12 +79,12 @@ function Footer() {
       <h2 className="head-text">Chat with me</h2>
       <div className="app__footer">
         <div className="app__footer-cardList">
-          <div className="app__footer-card">
+          {/* <div className="app__footer-card">
             <img src={images.mobile} alt="mobile" />
             <a className="anchor p-text" href="tel: +91 9517405762">
               Contact via mobile
             </a>
-          </div>
+          </div> */}
           <div className="app__footer-card">
             <img src={images.email} alt="email" />
             <a
@@ -79,7 +97,11 @@ function Footer() {
         </div>
 
         {!isSubmitted ? (
-          <form className="app__footer-form app__flex">
+          <form
+            className="app__footer-form app__flex"
+            ref={form}
+            onSubmit={handleSubmit}
+          >
             <div className="app__flex">
               <input
                 name="name"
@@ -112,7 +134,7 @@ function Footer() {
                 required
               />
             </div>
-            <button className="p-text" onClick={handleSubmit}>
+            <button type="submit" className="p-text" onClick={handleSubmit}>
               Send Message
             </button>
           </form>

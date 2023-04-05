@@ -10,6 +10,21 @@ const tempUrl = "https://github.com/Abhijeet-Gautam5702";
 
 const projects = [
   {
+    title: "Restro",
+    url: "https://github.com/Abhijeet-Gautam5702/restaurant-website",
+    img: images.restro,
+  },
+  {
+    title: "Codechef Archive",
+    url: "https://github.com/Abhijeet-Gautam5702/codechef-archive",
+    img: images.ccarchive,
+  },
+  {
+    title: "My Notes",
+    url: "https://github.com/Abhijeet-Gautam5702/my-notes-app",
+    img: images.mynotes,
+  },
+  {
     title: "Comments Section",
     url: "https://github.com/Abhijeet-Gautam5702/interactive-comments-section",
     img: images.commentsection,
@@ -20,19 +35,9 @@ const projects = [
     img: images.jobportal,
   },
   {
-    title: "Codechef Archive",
-    url: "https://github.com/Abhijeet-Gautam5702/codechef-archive",
-    img: images.ccarchive,
-  },
-  {
     title: "Landing Page",
     url: "https://github.com/Abhijeet-Gautam5702/satvik-tourism",
     img: images.satviktourism,
-  },
-  {
-    title: "My Notes",
-    url: "https://github.com/Abhijeet-Gautam5702/my-notes-app",
-    img: images.mynotes,
   },
   {
     title: "Gamify Login",
