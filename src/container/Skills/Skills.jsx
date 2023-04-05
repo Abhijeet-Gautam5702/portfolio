@@ -26,7 +26,7 @@ const skills = [
   },
   {
     logo: images.redux,
-    title: "React",
+    title: "Redux",
   },
   {
     logo: images.cpp,
