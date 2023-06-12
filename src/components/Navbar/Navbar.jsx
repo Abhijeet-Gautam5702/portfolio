@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
-import { images } from "../../constants";
+// import { images } from "../../constants";
 import "./Navbar.scss";
 
-const navElements = ["home", "about", "work", "skills", "contact"].map(
+const navElements = ["home", "about", "work", "skills"].map(
   (item) => {
     return (
       <li className="app__flex p-text" key={item}>
@@ -37,7 +37,7 @@ export default function Navbar() {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {["home", "about", "work", "skills", "contact"].map((item) => {
+              {["home", "about", "work", "skills"].map((item) => {
                 return (
                   <li key={`menu-${item}`}>
                     <a onClick={() => setToggle(false)} href={`#${item}`}>

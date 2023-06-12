@@ -17,12 +17,24 @@ const skills = [
     title: "Saas",
   },
   {
+    logo: images.tailwind,
+    title: "Tailwind CSS",
+  },
+  {
     logo: images.javascript,
     title: "Javascript",
   },
   {
+    logo: images.typescript,
+    title: "TypeScript",
+  },
+  {
     logo: images.react,
     title: "React",
+  },
+  {
+    logo: images.next2,
+    title: "Next",
   },
   {
     logo: images.redux,
@@ -31,6 +43,10 @@ const skills = [
   {
     logo: images.cpp,
     title: "C++",
+  },
+  {
+    logo: images.flutter,
+    title: "Flutter",
   },
   {
     logo: images.git,
@@ -48,7 +64,7 @@ function Skills() {
         {skills.map((skill, index) => {
           return (
             <div className="app__skills-item" key={index}>
-              <div className="app__skills-img-container">
+              <div className="app__skills-img-container app__flex">
                 <img src={skill.logo} alt="skill_logo" />
               </div>
               <p className="p-text">{skill.title}</p>

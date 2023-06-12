@@ -6,9 +6,17 @@ import { images } from "../../constants";
 
 import "./Work.scss";
 
-const tempUrl = "https://github.com/Abhijeet-Gautam5702";
-
 const projects = [
+  {
+    title: "Cover Me",
+    url: "https://github.com/Abhijeet-Gautam5702/cover-me",
+    img: images.coverme,
+  },
+  {
+    title: "JARVIS",
+    url: "https://github.com/Abhijeet-Gautam5702/jarvis",
+    img: images.jarvis2,
+  },
   {
     title: "Restro",
     url: "https://github.com/Abhijeet-Gautam5702/restaurant-website",
@@ -25,12 +33,12 @@ const projects = [
     img: images.mynotes,
   },
   {
-    title: "Comments Section",
+    title: "Comments Section UI",
     url: "https://github.com/Abhijeet-Gautam5702/interactive-comments-section",
     img: images.commentsection,
   },
   {
-    title: "Job Board",
+    title: "Job Board UI",
     url: "https://github.com/Abhijeet-Gautam5702/job-listing-portal",
     img: images.jobportal,
   },
@@ -38,11 +46,6 @@ const projects = [
     title: "Landing Page",
     url: "https://github.com/Abhijeet-Gautam5702/satvik-tourism",
     img: images.satviktourism,
-  },
-  {
-    title: "Gamify Login",
-    url: "https://github.com/Abhijeet-Gautam5702/multistep-form",
-    img: images.loginpage,
   },
 ];
 

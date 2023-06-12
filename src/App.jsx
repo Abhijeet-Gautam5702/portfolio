@@ -12,7 +12,7 @@ export default function App() {
       <Work />
       <Skills />
       {/* <Testimonial/> */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
