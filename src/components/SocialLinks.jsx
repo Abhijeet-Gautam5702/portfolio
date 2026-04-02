@@ -17,7 +17,11 @@ const SocialLinks = () => {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full text-sm text-muted hover:text-foreground hover:border-foreground transition-all duration-200"
+          className={`flex items-center gap-2 px-4 py-2 bg-card border rounded-full text-sm transition-all duration-200 ${
+            social.label === 'GitHub' 
+              ? 'border-brand/70 hover:text-foreground hover:border-foreground' 
+              : 'text-muted border-border hover:text-foreground hover:border-foreground'
+          }`}
         >
           <social.icon size={18} />
           <span>{social.label}</span>

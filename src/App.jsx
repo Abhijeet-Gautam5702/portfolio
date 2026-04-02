@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 import './index.css';
 
 const HomePage = () => (
-  <div className="w-full max-w-5xl p-4 md:p-8 pb-10">
+  <div className="pb-10">
     <div className="relative">
       <Banner />
       <ProfileImage />
@@ -32,9 +32,9 @@ const HomePage = () => (
 function App() {
   return (
     <Router>
-      <div className="min-h-screen w-full bg-background flex flex-col items-center pt-24">
+      <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
-        <main className="flex-grow w-full flex flex-col items-center">
+        <main className="flex-grow w-full max-w-5xl mx-auto pt-24 px-4 md:px-8">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/blogs/all" element={<AllBlogsPage />} />

@@ -10,7 +10,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-card/80 backdrop-blur-md border border-border rounded-full flex items-center gap-2 md:gap-4 shadow-2xl">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-card/80 backdrop-blur-md border border-brand/20 rounded-full flex items-center gap-2 md:gap-4 shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300">
       <Link 
         to="/" 
         className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${

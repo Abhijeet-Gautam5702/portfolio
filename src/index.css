@@ -6,6 +6,7 @@
   --font-mono: "JetBrains Mono", "monospace";
   --color-background: #0a0a0a;
   --color-foreground: #ffffff;
+  --color-brand: #3b82f6;
   --color-card: #111111;
   --color-muted: #888888;
   --color-border: #222222;
@@ -18,9 +19,10 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: start;
-  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+#root {
+  width: 100%;
 }

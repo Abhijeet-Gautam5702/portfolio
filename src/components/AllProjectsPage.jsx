@@ -12,7 +12,7 @@ const AllProjectsPage = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl p-4 md:p-8 pb-20">
+    <div className="pb-20">
       <div className="px-6 md:px-12 space-y-12">
         <div className="flex items-center gap-6">
           <button 

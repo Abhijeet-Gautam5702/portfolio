@@ -21,24 +21,26 @@ const ContributionsPage = () => {
 
   return (
     <div className="w-full max-w-5xl p-4 md:p-8 pb-20">
-      <div className="px-6 md:px-12 space-y-8">
-        <button 
-          onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group mb-8"
-        >
-          <FaArrowLeft className="group-hover:-translate-x-1 transition-transform" /> Back to Home
-        </button>
+      <div className="px-6 md:px-12 space-y-12">
+        <div className="flex items-center gap-6">
+          <button 
+            onClick={() => navigate('/')}
+            className="p-3 bg-card/50 border border-border rounded-full text-muted hover:text-foreground hover:border-muted transition-all group"
+            aria-label="Go back"
+          >
+            <FaArrowLeft className="group-hover:-translate-x-1 transition-transform" />
+          </button>
+          <h1 className="text-3xl font-bold text-foreground uppercase tracking-wider">
+            {repoName && repoName !== 'all' ? `${repoName} Contributions` : 'Contributions'}
+          </h1>
+        </div>
 
-        <h1 className="text-2xl font-bold text-foreground capitalize">
-          {repoName && repoName !== 'all' ? `${repoName} Contributions` : 'All Open Source Contributions'}
-        </h1>
-
-        <div className="space-y-4">
+        <div className="space-y-6">
           {filteredPrs.length > 0 ? (
             filteredPrs.map((pr) => (
               <div 
                 key={pr.id} 
-                className="p-4 bg-card/50 border border-border rounded-xl flex items-center justify-between hover:border-muted transition-colors group"
+                className="w-full p-5 md:p-6 bg-card/50 border border-border rounded-xl flex items-center justify-between hover:border-muted transition-colors group"
               >
                 <div className="flex items-center gap-4 overflow-hidden">
                   <div className={`p-2 rounded-lg ${pr.status === 'merged' ? 'bg-purple-500/10 text-purple-500' : 'bg-green-500/10 text-green-500'}`}>
