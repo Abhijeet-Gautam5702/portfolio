@@ -1,19 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
 import { VscGitPullRequest, VscGitMerge } from 'react-icons/vsc';
-
-const prs = [
-  { id: 1, repo: 'requestly', title: 'fix: updated interceptor logic for safari', status: 'merged', date: 'Oct 12' },
-  { id: 2, repo: 'flexprice', title: 'feat: add support for tiered pricing', status: 'open', date: 'Oct 5' },
-  { id: 3, repo: 'cal.com', title: 'refactor: simplify invite user flow', status: 'merged', date: 'Sept 28' },
-  { id: 4, repo: 'supabase', title: 'docs: clarify self-hosting steps', status: 'merged', date: 'Sept 15' },
-  { id: 5, repo: 'requestly', title: 'chore: bump dependencies for security', status: 'merged', date: 'Sept 10' },
-  { id: 6, repo: 'flexprice', title: 'fix: handling undefined values in dashboard', status: 'merged', date: 'Aug 22' },
-];
+import data from '../data.json';
 
 const ContributionsPage = () => {
   const { repoName } = useParams();
   const navigate = useNavigate();
+  const prs = data.prs;
 
   const filteredPrs = repoName && repoName !== 'all' 
     ? prs.filter(pr => pr.repo === repoName)

@@ -1,21 +1,9 @@
-const experiences = [
-  {
-    company: "Voxxi Labs, Inc.",
-    role: "Full Stack Developer",
-    period: "Aug - Oct '25",
-    description: "Developing robust and scalable web applications with high performance.",
-    location: "Remote",
-  },
-  {
-    company: "Previous Company",
-    role: "Backend Engineer",
-    period: "Jan - July '25",
-    description: "Built microservices and optimized database queries for core banking solutions.",
-    location: "Pune, India",
-  },
-];
+import React from 'react';
+import data from '../data.json';
 
 const WorkExperience = () => {
+  const experiences = data.sections.find(s => s.id === 'work-experience')?.items || [];
+
   return (
     <div className="mt-16 px-6 md:px-12 space-y-8">
       <h2 className="text-xl font-bold text-foreground">Work Experience</h2>

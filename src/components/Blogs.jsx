@@ -2,10 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa6';
 import BlogCard from './BlogCard';
-import { blogs } from './blogsData';
+import data from '../data.json';
 
 const Blogs = () => {
   const navigate = useNavigate();
+  const blogs = data.sections.find(s => s.id === 'blogs')?.items || [];
   const latestBlogs = blogs.slice(0, 4);
 
   return (

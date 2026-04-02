@@ -14,20 +14,33 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './index.css';
 
-const HomePage = () => (
-  <div className="pb-10">
-    <div className="relative">
-      <Banner />
-      <ProfileImage />
+import data from './data.json';
+
+const sectionComponents = {
+  'work-experience': WorkExperience,
+  'projects': Projects,
+  'open-source': OpenSourceContributions,
+  'blogs': Blogs,
+};
+
+const HomePage = () => {
+  const sortedSections = [...data.sections].sort((a, b) => a.rank - b.rank);
+
+  return (
+    <div className="pb-10 w-full">
+      <div className="relative">
+        <Banner />
+        <ProfileImage />
+      </div>
+      <Hero />
+      <SocialLinks />
+      {sortedSections.map((section) => {
+        const Component = sectionComponents[section.id];
+        return Component ? <Component key={section.id} /> : null;
+      })}
     </div>
-    <Hero />
-    <SocialLinks />
-    <WorkExperience />
-    <Projects />
-    <OpenSourceContributions />
-    <Blogs />
-  </div>
-);
+  );
+};
 
 function App() {
   return (

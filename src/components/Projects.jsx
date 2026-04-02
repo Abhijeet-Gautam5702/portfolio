@@ -2,10 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa6';
 import { VscRepo } from 'react-icons/vsc';
-import { projects } from './projectsData';
+import data from '../data.json';
 
 const Projects = () => {
   const navigate = useNavigate();
+  const projects = data.sections.find(s => s.id === 'projects')?.items || [];
   const topProjects = projects.slice(0, 4);
 
   return (
@@ -40,16 +41,29 @@ const Projects = () => {
                     {project.description}
                   </p>
                 </div>
-                <div className="flex items-center gap-4 text-xs font-mono text-muted pt-2">
-                  <span className="flex items-center gap-1">
-                    <span className={`w-2 h-2 rounded-full ${
-                      project.language === 'Rust' ? 'bg-orange-500' : 
-                      project.language === 'TypeScript' ? 'bg-blue-500' : 
-                      project.language === 'Go' ? 'bg-cyan-500' : 'bg-gray-500'
-                    }`}></span>
-                    {project.language}
-                  </span>
-                  <span>★ {project.stars.toLocaleString()}</span>
+                <div className="flex items-center justify-between gap-4 text-xs font-mono text-muted pt-2">
+                  <div className="flex items-center gap-4">
+                    <span className="flex items-center gap-1">
+                      <span className={`w-2 h-2 rounded-full ${
+                        project.language === 'Rust' ? 'bg-orange-500' : 
+                        project.language === 'TypeScript' ? 'bg-blue-500' : 
+                        project.language === 'Go' ? 'bg-cyan-500' : 'bg-gray-500'
+                      }`}></span>
+                      {project.language}
+                    </span>
+                    <span>★ {project.stars.toLocaleString()}</span>
+                  </div>
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs font-medium text-muted hover:text-brand transition-colors whitespace-nowrap"
+                    >
+                      Visit &rarr;
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

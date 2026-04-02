@@ -1,14 +1,24 @@
+import React from 'react';
+import data from '../data.json';
+
 const Hero = () => {
+  const { name, description } = data.profile;
+  const firstName = name.split(' ')[0];
+  const restOfName = name.slice(firstName.length);
+
   return (
     <div className="mt-4 px-6 md:px-12 space-y-4">
-      <h1 className="text-3xl md:text-4xl font-semibold text-foreground tracking-wide">
-        <span className="text-brand">A</span>bhijeet <span className="text-brand">G</span>autam
+      <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+        <span className="text-brand">{firstName.charAt(0)}</span>
+        {firstName.slice(1)}
+        {restOfName}
       </h1>
       <p className="text-muted text-lg max-w-2xl leading-relaxed">
-        I'm a Full Stack Developer based in Pune, India. I build web apps with TypeScript, React.js, Node.js, and Express.js. In my free time, I learn Go, read tech blogs, or touch some Dumbbells.
+        {description}
       </p>
     </div>
   );
 };
 
 export default Hero;
+

@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa6';
 import BlogCard from './BlogCard';
-import { blogs } from './blogsData';
+import data from '../data.json';
 
 const AllBlogsPage = () => {
   const navigate = useNavigate();
+  const blogs = data.sections.find(s => s.id === 'blogs')?.items || [];
 
   useEffect(() => {
     window.scrollTo(0, 0);

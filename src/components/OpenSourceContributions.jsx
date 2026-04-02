@@ -1,16 +1,12 @@
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa6';
 import { VscRepo } from 'react-icons/vsc';
-
-const topRepos = [
-  { name: 'Requestly', description: 'Open-source alternative to Charles Proxy & Fiddler.', stars: 2100, language: 'TypeScript' },
-  { name: 'Flexprice', description: 'Open-source metering and billing infrastructure.', stars: 1200, language: 'Go' },
-  { name: 'Cal.com', description: 'Scheduling infrastructure for everyone.', stars: 31000, language: 'TypeScript' },
-  { name: 'Supabase', description: 'The open source Firebase alternative.', stars: 65000, language: 'TypeScript' },
-];
+import data from '../data.json';
 
 const OpenSourceContributions = () => {
   const navigate = useNavigate();
+  const topRepos = data.sections.find(s => s.id === 'open-source')?.items || [];
 
   return (
     <div className="mt-16 px-6 md:px-12 space-y-8">
@@ -42,7 +38,10 @@ const OpenSourceContributions = () => {
                 </p>
                 <div className="flex items-center gap-4 text-xs font-mono text-muted">
                   <span className="flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                    <span className={`w-2 h-2 rounded-full ${
+                      repo.language === 'TypeScript' ? 'bg-blue-500' : 
+                      repo.language === 'Go' ? 'bg-cyan-500' : 'bg-gray-500'
+                    }`}></span>
                     {repo.language}
                   </span>
                   <span>★ {repo.stars.toLocaleString()}</span>
