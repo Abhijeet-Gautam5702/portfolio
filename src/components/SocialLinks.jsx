@@ -12,7 +12,7 @@ const iconMap = {
 
 const SocialLinks = () => {
   return (
-    <div className="flex flex-wrap gap-4 px-6 md:px-12 mt-6">
+    <div className="flex flex-wrap gap-4 mt-6">
       {data.socials.map((social) => {
         const Icon = iconMap[social.icon];
         return (
@@ -28,7 +28,7 @@ const SocialLinks = () => {
             }`}
           >
             {Icon && <Icon size={18} />}
-            <span>{social.label}</span>
+            <span className="hidden md:inline">{social.label}</span>
           </a>
         );
       })}

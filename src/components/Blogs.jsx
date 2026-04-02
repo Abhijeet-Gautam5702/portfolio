@@ -10,7 +10,7 @@ const Blogs = () => {
   const latestBlogs = blogs.slice(0, 4);
 
   return (
-    <div className="mt-16 px-6 md:px-12 space-y-8">
+    <div className="mt-16 space-y-8">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-bold text-foreground tracking-wider">Blogs</h2>
         <button 

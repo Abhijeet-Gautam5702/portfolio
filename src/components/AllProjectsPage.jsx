@@ -14,7 +14,7 @@ const AllProjectsPage = () => {
 
   return (
     <div className="pb-20">
-      <div className="px-6 md:px-12 space-y-12">
+      <div className="space-y-12">
         <div className="flex items-center gap-6">
           <button 
             onClick={() => navigate('/')}

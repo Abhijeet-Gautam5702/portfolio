@@ -7,7 +7,7 @@ const Hero = () => {
   const restOfName = name.slice(firstName.length);
 
   return (
-    <div className="mt-4 px-6 md:px-12 space-y-4">
+    <div className="mt-4 space-y-4">
       <h1 className="text-3xl md:text-4xl font-bold text-foreground">
         <span className="text-brand">{firstName.charAt(0)}</span>
         {firstName.slice(1)}

@@ -47,7 +47,7 @@ function App() {
     <Router>
       <div className="min-h-screen flex flex-col bg-background">
         <Navbar />
-        <main className="flex-grow w-full max-w-5xl mx-auto pt-24 px-4 md:px-8">
+        <main className="flex-grow w-full max-w-5xl mx-auto pt-24 px-6 md:px-12">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/blogs/all" element={<AllBlogsPage />} />

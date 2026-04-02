@@ -5,7 +5,7 @@ const WorkExperience = () => {
   const experiences = data.sections.find(s => s.id === 'work-experience')?.items || [];
 
   return (
-    <div className="mt-16 px-6 md:px-12 space-y-8">
+    <div className="mt-16 space-y-8">
       <h2 className="text-xl font-bold text-foreground">Work Experience</h2>
       <div className="space-y-6">
         {experiences.map((exp, index) => (
