@@ -13,7 +13,7 @@
     {
       "id": "work-experience",
       "title": "Work Experience",
-      "rank": 4,
+      "rank": 1,
       "items": [
         {
           "company": "Voxxi Labs, Inc.",
@@ -71,7 +71,7 @@
     {
       "id": "open-source",
       "title": "Open Source Contributions",
-      "rank": 1,
+      "rank": 3,
       "items": [
         { "name": "Requestly", "description": "Open-source alternative to Charles Proxy & Fiddler.", "stars": 2100, "language": "TypeScript" },
         { "name": "Flexprice", "description": "Open-source metering and billing infrastructure.", "stars": 1200, "language": "Go" },
@@ -82,7 +82,7 @@
     {
       "id": "blogs",
       "title": "Blogs",
-      "rank": 3,
+      "rank": 4,
       "items": [
         {
           "title": "From Hashes to Maps: Consistent Hashing as a Lesson in Go Internals",
