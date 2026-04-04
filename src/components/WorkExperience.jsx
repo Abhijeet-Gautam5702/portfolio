@@ -9,7 +9,7 @@ const WorkExperience = () => {
 
   return (
     <div className="mt-16 space-y-8">
-      <h2 className="text-xl font-bold text-foreground">Work Experience</h2>
+      <h2 className="text-xl font-semibold text-foreground">Work Experience</h2>
       <div className="space-y-6">
         {experiences.map((exp, index) => (
           <div

@@ -11,7 +11,7 @@ const OpenSourceContributions = () => {
   return (
     <div className="mt-16 space-y-8">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold text-foreground">Open Source Contributions</h2>
+        <h2 className="text-xl font-semibold text-foreground">Open Source Contributions</h2>
         <button 
           onClick={() => navigate('/contributions/all')}
           className="relative flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group"

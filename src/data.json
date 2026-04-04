@@ -5,16 +5,24 @@
     "description": "I build **Rust** CLI tools & backend systems in **Node + TypeScript**."
   },
   "socials": [
-    { "label": "GitHub", "href": "https://github.com", "icon": "FaGithub" },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/Abhijeet-Gautam5702",
+      "icon": "FaGithub"
+    },
     {
       "label": "LinkedIn",
-      "href": "https://linkedin.com",
+      "href": "https://linkedin.com/in/abhijeet-gautam-a413b1211",
       "icon": "FaLinkedinIn"
     },
-    { "label": "Twitter", "href": "https://twitter.com", "icon": "FaXTwitter" },
+    {
+      "label": "X",
+      "href": "https://x.com/abhijeet_gautam",
+      "icon": "FaXTwitter"
+    },
     {
       "label": "Email",
-      "href": "mailto:hello@example.com",
+      "href": "mailto:abhijeetgautam572@gmail.com",
       "icon": "IoMailSharp"
     }
   ],
@@ -51,18 +59,14 @@
           "name": "forg",
           "description": "A simple file organiser CLI tool that automatically sorts all your files into folders based on their extensions.",
           "stars": 0,
-          "languages": [
-            { "name": "Rust", "color": "#f97316" }
-          ],
+          "languages": [{ "name": "Rust", "color": "#f97316" }],
           "link": "https://github.com/Abhijeet-Gautam5702/forg"
         },
         {
           "name": "Panda-Q",
           "description": "A single node message broker with at-least once delivery semantics.",
           "stars": 0,
-          "languages": [
-            { "name": "TypeScript", "color": "#3b82f6" }
-          ],
+          "languages": [{ "name": "TypeScript", "color": "#3b82f6" }],
           "link": "https://github.com/Abhijeet-Gautam5702/Panda-Q"
         },
         {
@@ -88,33 +92,25 @@
           "name": "Requestly",
           "description": "Open-source alternative to Charles Proxy & Fiddler.",
           "stars": 2100,
-          "languages": [
-            { "name": "TypeScript", "color": "#3b82f6" }
-          ]
+          "languages": [{ "name": "TypeScript", "color": "#3b82f6" }]
         },
         {
           "name": "Flexprice",
           "description": "Open-source metering and billing infrastructure.",
           "stars": 1200,
-          "languages": [
-            { "name": "Go", "color": "#06b6d4" }
-          ]
+          "languages": [{ "name": "Go", "color": "#06b6d4" }]
         },
         {
           "name": "Cal.com",
           "description": "Scheduling infrastructure for everyone.",
           "stars": 31000,
-          "languages": [
-            { "name": "TypeScript", "color": "#3b82f6" }
-          ]
+          "languages": [{ "name": "TypeScript", "color": "#3b82f6" }]
         },
         {
           "name": "Supabase",
           "description": "The open source Firebase alternative.",
           "stars": 65000,
-          "languages": [
-            { "name": "TypeScript", "color": "#3b82f6" }
-          ]
+          "languages": [{ "name": "TypeScript", "color": "#3b82f6" }]
         }
       ]
     },

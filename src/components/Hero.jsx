@@ -21,14 +21,14 @@ const Hero = () => {
   };
 
   return (
-    <div className="mt-4 space-y-4">
+    <div className="mt-8 space-y-4">
       <div>
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+        <h1 className="text-3xl md:text-4xl font-semibold text-foreground">
           <span className="text-brand">{firstName.charAt(0)}</span>
           {firstName.slice(1)}
           {restOfName}
         </h1>
-        <p className="text-xl font-semibold mt-1 text-foreground">
+        <p className="text-xl font-medium mt-1 text-foreground">
           {designation}
         </p>
       </div>
