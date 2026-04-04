@@ -11,6 +11,7 @@ import AllProjectsPage from './components/AllProjectsPage';
 import Blogs from './components/Blogs';
 import AllBlogsPage from './components/AllBlogsPage';
 import ContributionsPage from './components/ContributionsPage';
+import WorkExperienceDetailsPage from './components/WorkExperienceDetailsPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './index.css';
@@ -86,6 +87,7 @@ function App() {
             <Route path="/blogs/all" element={<AllBlogsPage />} />
             <Route path="/projects/all" element={<AllProjectsPage />} />
             <Route path="/contributions/:repoName" element={<ContributionsPage />} />
+            <Route path="/work-experience/:companySlug" element={<WorkExperienceDetailsPage />} />
           </Routes>
         </main>
         <Footer />

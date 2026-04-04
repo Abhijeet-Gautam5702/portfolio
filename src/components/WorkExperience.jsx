@@ -1,8 +1,11 @@
-import React from 'react';
-import data from '../data.json';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import data from "../data.json";
 
 const WorkExperience = () => {
-  const experiences = data.sections.find(s => s.id === 'work-experience')?.items || [];
+  const navigate = useNavigate();
+  const experiences =
+    data.sections.find((s) => s.id === "work-experience")?.items || [];
 
   return (
     <div className="mt-16 space-y-8">
@@ -11,22 +14,50 @@ const WorkExperience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="group relative flex flex-col md:flex-row md:items-start justify-between p-4 md:p-6 bg-card/50 border border-border rounded-xl hover:border-brand transition-colors duration-300"
+            onClick={() => navigate(`/work-experience/${exp.slug}`)}
+            className="group relative flex flex-col md:flex-row md:items-start justify-between p-4 md:p-6 bg-card/50 border border-border rounded-xl hover:border-brand transition-all duration-300 cursor-pointer"
           >
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold text-foreground transition-colors">
-                  {exp.company}
-                </h3>
-                <span className="text-[10px] md:text-xs px-2 py-0.5 bg-border rounded-full text-muted">
-                  {exp.location}
-                </span>
+            <div className="space-y-1 w-full">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-brand transition-colors">
+                    {exp.company}
+                  </h3>
+                  {exp.company_type && (
+                    <span className="text-xs md:text-sm px-2 py-0.5 border border-brand/30 rounded-full text-brand">
+                      {exp.company_type}
+                    </span>
+                  )}
+                </div>
+                <div className="md:hidden flex flex-col items-end">
+                  <div className="text-xs font-mono text-muted uppercase tracking-wider">
+                    {exp.period}
+                  </div>
+                  <div className="text-xs font-mono text-muted tracking-wider">
+                    {exp.location}
+                  </div>
+                </div>
               </div>
+
               <p className="text-sm text-muted/80">{exp.role}</p>
-              <p className="text-sm text-muted mt-2 max-w-xl">{exp.description}</p>
+              <p className="text-sm text-muted mt-2 max-w-xl line-clamp-2 md:line-clamp-none">
+                {exp.description}
+              </p>
+
+              <div className="mt-4 md:hidden">
+                <button className="text-xs font-medium text-brand flex items-center gap-1">
+                  View details <span className="text-lg">&rarr;</span>
+                </button>
+              </div>
             </div>
-            <div className="mt-2 md:mt-0 text-xs font-mono text-muted uppercase tracking-wider">
-              {exp.period}
+
+            <div className="hidden md:flex flex-col items-end mt-2 md:mt-0 whitespace-nowrap">
+              <div className="text-xs font-mono text-muted uppercase tracking-wider">
+                {exp.period}
+              </div>
+              <div className="text-xs font-mono text-muted tracking-wider mt-2">
+                {exp.location}
+              </div>
             </div>
           </div>
         ))}
