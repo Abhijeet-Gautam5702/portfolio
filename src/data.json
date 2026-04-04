@@ -83,6 +83,27 @@
       ]
     },
     {
+      "id": "blogs",
+      "title": "Blogs",
+      "rank": 3,
+      "items": [
+        {
+          "title": "How to secure your authentication using nonces",
+          "description": "When authentication goes wrong, it's not just about losing data. Discover how nonces boost security in authentication systems.",
+          "date": "16 Sep '25",
+          "tags": ["Auth Security", "Nonces", "System Design"],
+          "link": "https://blogs.abhijeetgautam.in/how-to-secure-your-authentication-using-nonces"
+        },
+        {
+          "title": "Starter guide: Configuring a remote server for backend deployment",
+          "description": "Critical steps to setup & secure your remote server from potential threats",
+          "date": "07 Feb '25",
+          "tags": ["Remote Servers", "Security"],
+          "link": "https://blogs.abhijeetgautam.in/vps-security-starter-guide"
+        }
+      ]
+    },
+    {
       "id": "open-source",
       "title": "Open Source Contributions",
       "rank": 3,
@@ -115,23 +136,15 @@
       ]
     },
     {
-      "id": "blogs",
-      "title": "Blogs",
-      "rank": 4,
+      "id": "papers",
+      "title": "Technical Papers",
+      "rank": 5,
+      "hide": true,
       "items": [
         {
-          "title": "How to secure your authentication using nonces",
-          "description": "When authentication goes wrong, it's not just about losing data. Discover how nonces boost security in authentication systems.",
-          "date": "16 Sep '25",
-          "tags": ["Auth Security", "Nonces", "System Design"],
-          "link": "https://blogs.abhijeetgautam.in/how-to-secure-your-authentication-using-nonces"
-        },
-        {
-          "title": "Starter guide: Configuring a remote server for backend deployment",
-          "description": "Critical steps to setup & secure your remote server from potential threats",
-          "date": "07 Feb '25",
-          "tags": ["Remote Servers", "Security"],
-          "link": "https://blogs.abhijeetgautam.in/vps-security-starter-guide"
+          "title": "The Raft Consensus Algorithm",
+          "description": "In search of an understandable consensus algorithm. This paper explains Raft, a consensus algorithm that is designed to be easy to understand.",
+          "link": "https://raft.github.io/raft.pdf"
         }
       ]
     }
