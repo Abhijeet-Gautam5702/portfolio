@@ -7,14 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0a0a0a",
-        foreground: "#ffffff",
-        card: "#111111",
-        muted: "#888888",
-        border: "#222222",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        brand: "var(--brand)",
+        card: "var(--card)",
+        muted: "var(--muted)",
+        border: "var(--border)",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
     },

@@ -25,7 +25,7 @@ const OpenSourceContributions = () => {
           <div
             key={repo.name}
             onClick={() => navigate(`/contributions/${repo.name.toLowerCase()}`)}
-            className="p-5 bg-card/50 border border-border rounded-xl cursor-pointer hover:border-muted hover:bg-card transition-all duration-300 group"
+            className="p-5 bg-card/50 border border-border rounded-xl cursor-pointer hover:border-brand hover:bg-card transition-all duration-300 group"
           >
             <div className="flex items-start justify-between">
               <div className="space-y-3">

@@ -33,14 +33,14 @@ const ContributionsPage = () => {
             filteredPrs.map((pr) => (
               <div 
                 key={pr.id} 
-                className="w-full p-5 md:p-6 bg-card/50 border border-border rounded-xl flex items-center justify-between hover:border-muted transition-colors group"
+                className="w-full p-5 md:p-6 bg-card/50 border border-border rounded-xl flex items-center justify-between hover:border-brand transition-colors group"
               >
                 <div className="flex items-center gap-4 overflow-hidden">
                   <div className={`p-2 rounded-lg ${pr.status === 'merged' ? 'bg-purple-500/10 text-purple-500' : 'bg-green-500/10 text-green-500'}`}>
                     {pr.status === 'merged' ? <VscGitMerge size={20} /> : <VscGitPullRequest size={20} />}
                   </div>
                   <div className="overflow-hidden">
-                    <h3 className="text-foreground font-medium truncate group-hover:text-white transition-colors">{pr.title}</h3>
+                    <h3 className="text-foreground font-medium truncate transition-colors">{pr.title}</h3>
                     <p className="text-xs text-muted flex items-center gap-2">
                       <span className="capitalize">{pr.repo}</span> • {pr.date}
                     </p>

@@ -11,11 +11,11 @@ const WorkExperience = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="group relative flex flex-col md:flex-row md:items-start justify-between p-4 md:p-6 bg-card/50 border border-border rounded-xl hover:border-muted transition-colors duration-300"
+            className="group relative flex flex-col md:flex-row md:items-start justify-between p-4 md:p-6 bg-card/50 border border-border rounded-xl hover:border-brand transition-colors duration-300"
           >
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-white transition-colors">
+                <h3 className="text-lg font-semibold text-foreground transition-colors">
                   {exp.company}
                 </h3>
                 <span className="text-[10px] md:text-xs px-2 py-0.5 bg-border rounded-full text-muted">

@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Banner from './components/Banner';
 import ProfileImage from './components/ProfileImage';
 import Hero from './components/Hero';
@@ -43,10 +44,34 @@ const HomePage = () => {
 };
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'SYSTEM';
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    
+    const applyTheme = () => {
+      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const effectiveTheme = theme === 'SYSTEM' ? systemPreference : theme.toLowerCase();
+      root.setAttribute('data-theme', effectiveTheme);
+    };
+
+    applyTheme();
+    localStorage.setItem('theme', theme);
+
+    if (theme === 'SYSTEM') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = () => applyTheme();
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [theme]);
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-background">
-        <Navbar />
+        <Navbar theme={theme} setTheme={setTheme} />
         <main className="flex-grow w-full max-w-5xl mx-auto pt-24 px-6 md:px-12">
           <Routes>
             <Route path="/" element={<HomePage />} />

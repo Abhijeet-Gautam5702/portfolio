@@ -33,7 +33,7 @@ const AllProjectsPage = () => {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 bg-card/50 border border-border rounded-xl cursor-pointer hover:border-muted hover:bg-card transition-all duration-300 group block"
+              className="p-6 bg-card/50 border border-border rounded-xl cursor-pointer hover:border-brand hover:bg-card transition-all duration-300 group block"
             >
               <div className="flex items-start justify-between h-full">
                 <div className="space-y-4 flex flex-col h-full justify-between">
