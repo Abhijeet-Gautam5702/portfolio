@@ -26,7 +26,9 @@ const sectionComponents = {
 };
 
 const HomePage = () => {
-  const sortedSections = [...data.sections].sort((a, b) => a.rank - b.rank);
+  const sortedSections = [...data.sections]
+    .filter((section) => !section.hide)
+    .sort((a, b) => a.rank - b.rank);
 
   return (
     <div className="pb-10 w-full">
