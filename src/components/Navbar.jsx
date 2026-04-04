@@ -31,7 +31,8 @@ const Navbar = ({ theme, setTheme }) => {
   const currentIcon = themes.find(t => t.name === theme)?.icon;
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-card/80 backdrop-blur-md border border-brand/20 rounded-full flex items-center gap-2 md:gap-4 shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-card/80 backdrop-blur-xl border border-brand/20 rounded-full flex items-center gap-2 md:gap-4 shadow-[0_0_30px_rgba(59,130,246,0.25)] transition-all duration-300">
+
       <Link 
         to="/" 
         className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${

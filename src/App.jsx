@@ -71,6 +71,14 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col bg-background">
+        <div 
+          className="fixed top-0 left-0 w-full h-[100px] backdrop-blur-[3px] z-[40] pointer-events-none" 
+          style={{
+            maskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 100%)'
+          }}
+          aria-hidden="true"
+        ></div>
         <Navbar theme={theme} setTheme={setTheme} />
         <main className="flex-grow w-full max-w-5xl mx-auto pt-24 px-6 md:px-12">
           <Routes>
