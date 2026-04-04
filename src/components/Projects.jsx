@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowRight } from 'react-icons/fa6';
+import { FaArrowRight, FaStar } from 'react-icons/fa6';
 import { VscRepo } from 'react-icons/vsc';
 import data from '../data.json';
 
@@ -15,9 +15,13 @@ const Projects = () => {
         <h2 className="text-xl font-bold text-foreground">Projects</h2>
         <button 
           onClick={() => navigate('/projects/all')}
-          className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group"
+          className="relative flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group"
         >
-          View All <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+          <span className="relative">
+            View All
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full rounded-full"></span>
+          </span>
+          <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
@@ -42,16 +46,24 @@ const Projects = () => {
                   </p>
                 </div>
                 <div className="flex items-center justify-between gap-4 text-xs font-mono text-muted pt-2">
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-1">
-                      <span className={`w-2 h-2 rounded-full ${
-                        project.language === 'Rust' ? 'bg-orange-500' : 
-                        project.language === 'TypeScript' ? 'bg-blue-500' : 
-                        project.language === 'Go' ? 'bg-cyan-500' : 'bg-gray-500'
-                      }`}></span>
-                      {project.language}
-                    </span>
-                    <span>★ {project.stars.toLocaleString()}</span>
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
+                      {project.languages?.map((lang, idx) => (
+                        <span 
+                          key={idx} 
+                          className="px-2 py-0.5 border rounded-md text-[11px] uppercase tracking-wider"
+                          style={{ borderColor: `${lang.color}40`, color: lang.color }}
+                        >
+                          {lang.name}
+                        </span>
+                      ))}
+                    </div>
+                    {project.stars > 0 && (
+                      <span className="flex items-center gap-1">
+                        <FaStar className="text-[10px] mb-0.5" />
+                        {project.stars.toLocaleString()}
+                      </span>
+                    )}
                   </div>
                   {project.liveLink && (
                     <a
@@ -59,9 +71,10 @@ const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-xs font-medium text-muted hover:text-brand transition-colors whitespace-nowrap"
+                      className="relative text-xs font-medium text-muted hover:text-brand transition-colors whitespace-nowrap group/visit"
                     >
                       Visit &rarr;
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover/visit:w-full rounded-full"></span>
                     </a>
                   )}
                 </div>

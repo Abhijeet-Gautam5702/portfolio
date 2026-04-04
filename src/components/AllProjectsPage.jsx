@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa6';
+import { FaArrowLeft, FaStar } from 'react-icons/fa6';
 import { VscRepo } from 'react-icons/vsc';
 import data from '../data.json';
 
@@ -47,16 +47,24 @@ const AllProjectsPage = () => {
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6 text-xs font-mono text-muted pt-4">
-                    <div className="flex items-center gap-6">
-                      <span className="flex items-center gap-2">
-                        <span className={`w-3 h-3 rounded-full ${
-                          project.language === 'Rust' ? 'bg-orange-500' : 
-                          project.language === 'TypeScript' ? 'bg-blue-500' : 
-                          project.language === 'Go' ? 'bg-cyan-500' : 'bg-gray-500'
-                        }`}></span>
-                        {project.language}
-                      </span>
-                      <span className="flex items-center gap-1">★ {project.stars.toLocaleString()}</span>
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        {project.languages?.map((lang, idx) => (
+                          <span 
+                            key={idx} 
+                            className="px-2 py-0.5 border rounded-md text-[11px] uppercase tracking-wider"
+                            style={{ borderColor: `${lang.color}40`, color: lang.color }}
+                          >
+                            {lang.name}
+                          </span>
+                        ))}
+                      </div>
+                      {project.stars > 0 && (
+                        <span className="flex items-center gap-1 text-muted">
+                          <FaStar className="text-[10px] mb-0.5" />
+                          {project.stars.toLocaleString()}
+                        </span>
+                      )}
                     </div>
                     {project.liveLink && (
                       <a
@@ -64,9 +72,10 @@ const AllProjectsPage = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="text-sm font-medium text-muted hover:text-brand transition-colors whitespace-nowrap"
+                        className="relative text-sm font-medium text-muted hover:text-brand transition-colors whitespace-nowrap group/visit"
                       >
                         Visit &rarr;
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover/visit:w-full rounded-full"></span>
                       </a>
                     )}
                   </div>

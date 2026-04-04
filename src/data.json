@@ -49,33 +49,32 @@
       "items": [
         {
           "name": "forg",
-          "description": "A file organiser CLI tool for lazy devs. Automatically sorts your files into folders based on their extensions.",
-          "stars": 45,
-          "language": "Rust",
+          "description": "A simple file organiser CLI tool that automatically sorts all your files into folders based on their extensions.",
+          "stars": 0,
+          "languages": [
+            { "name": "Rust", "color": "#f97316" }
+          ],
           "link": "https://github.com/Abhijeet-Gautam5702/forg"
         },
         {
           "name": "Panda-Q",
-          "description": "A single-node message broker written in TypeScript. Lightweight and easy to integrate for local development and small-scale apps.",
-          "stars": 120,
-          "language": "TypeScript",
+          "description": "A single node message broker with at-least once delivery semantics.",
+          "stars": 0,
+          "languages": [
+            { "name": "TypeScript", "color": "#3b82f6" }
+          ],
           "link": "https://github.com/Abhijeet-Gautam5702/Panda-Q"
         },
         {
           "name": "Auth Wave",
           "description": "Authentication provider and user management service for web applications. Secure, scalable, and easy to set up.",
-          "stars": 85,
-          "language": "TypeScript",
+          "stars": 3,
+          "languages": [
+            { "name": "TypeScript", "color": "#3b82f6" },
+            { "name": "Node.js", "color": "#22c55e" }
+          ],
           "link": "https://github.com/Auth-Wave",
-          "liveLink": "https://authwave.xyz"
-        },
-        {
-          "name": "Portfolio V1",
-          "description": "My first personal portfolio website built with React and Tailwind CSS.",
-          "stars": 12,
-          "language": "React",
-          "link": "https://github.com/Abhijeet-Gautam5702",
-          "liveLink": "https://abhijeetgautam.in"
+          "liveLink": "https://authwave.in"
         }
       ]
     },
@@ -89,25 +88,33 @@
           "name": "Requestly",
           "description": "Open-source alternative to Charles Proxy & Fiddler.",
           "stars": 2100,
-          "language": "TypeScript"
+          "languages": [
+            { "name": "TypeScript", "color": "#3b82f6" }
+          ]
         },
         {
           "name": "Flexprice",
           "description": "Open-source metering and billing infrastructure.",
           "stars": 1200,
-          "language": "Go"
+          "languages": [
+            { "name": "Go", "color": "#06b6d4" }
+          ]
         },
         {
           "name": "Cal.com",
           "description": "Scheduling infrastructure for everyone.",
           "stars": 31000,
-          "language": "TypeScript"
+          "languages": [
+            { "name": "TypeScript", "color": "#3b82f6" }
+          ]
         },
         {
           "name": "Supabase",
           "description": "The open source Firebase alternative.",
           "stars": 65000,
-          "language": "TypeScript"
+          "languages": [
+            { "name": "TypeScript", "color": "#3b82f6" }
+          ]
         }
       ]
     },

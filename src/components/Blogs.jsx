@@ -15,11 +15,14 @@ const Blogs = () => {
         <h2 className="text-xl font-bold text-foreground tracking-wider">Blogs</h2>
         <button 
           onClick={() => navigate('/blogs/all')}
-          className="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group"
+          className="relative flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors group"
         >
-          View All <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-        </button>
-      </div>
+          <span className="relative">
+            View All
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full rounded-full"></span>
+          </span>
+          <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+        </button>      </div>
 
       <div className="grid grid-cols-1 gap-4">
         {latestBlogs.map((blog, index) => (
