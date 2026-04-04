@@ -11,7 +11,7 @@ const Hero = () => {
     return parts.map((part, index) => {
       if (part.startsWith('**') && part.endsWith('**')) {
         return (
-          <span key={index} className="font-medium bg-gradient-to-r from-brand to-brand/50 bg-clip-text text-transparent">
+          <span key={index} className="font-medium text-brand">
             {part.slice(2, -2)}
           </span>
         );
@@ -28,7 +28,7 @@ const Hero = () => {
           {firstName.slice(1)}
           {restOfName}
         </h1>
-        <p className="text-xl font-semibold mt-1 bg-gradient-to-r from-brand to-brand/50 bg-clip-text text-transparent inline-block">
+        <p className="text-xl font-semibold mt-1 text-foreground">
           {designation}
         </p>
       </div>
