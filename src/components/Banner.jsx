@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="w-full h-40 md:h-56 bg-card rounded-xl border border-border mt-4 mb-[-3rem] md:-mb-20 relative overflow-hidden group">
+    <div className="w-full h-40 md:h-56 bg-card rounded-xl border border-border mt-4 mb-[-3rem] md:mb-[-5rem] relative overflow-hidden group">
       {/* Background patterns: subtle dot grid */}
       <div
         className="absolute inset-0 opacity-[0.03] dark:opacity-[0.1]"
