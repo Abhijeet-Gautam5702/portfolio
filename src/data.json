@@ -21,6 +21,11 @@
       "icon": "FaXTwitter"
     },
     {
+      "label": "Resume",
+      "href": "/resume",
+      "icon": "FaFilePdf"
+    },
+    {
       "label": "Email",
       "href": "mailto:abhijeetgautam572@gmail.com",
       "icon": "IoMailSharp"

@@ -13,6 +13,7 @@ import AllProjectsPage from "./components/AllProjectsPage";
 import ContributionsPage from "./components/ContributionsPage";
 import WorkExperienceDetailsPage from "./components/WorkExperienceDetailsPage";
 import TechnicalPapers from "./components/TechnicalPapers";
+import ResumePage from "./components/ResumePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./index.css";
@@ -103,6 +104,7 @@ function App() {
               path="/work-experience/:companySlug"
               element={<WorkExperienceDetailsPage />}
             />
+            <Route path="/resume" element={<ResumePage />} />
           </Routes>
         </main>
         <Footer />
