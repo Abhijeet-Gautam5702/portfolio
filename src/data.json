@@ -41,11 +41,11 @@
           "description": "Developed robust backend APIs and shipped features end-to-end.",
           "location": "Gurugram, India",
           "points": [
-            "Architected and implemented high-performance backend APIs using Node.js and TypeScript.",
-            "Integrated various payment gateways and optimized transaction flows for better success rates.",
-            "Collaborated with frontend teams to deliver seamless user experiences across mobile and web platforms.",
-            "Managed database migrations and query optimizations for PostgreSQL and Redis.",
-            "Mentored junior engineers and participated in peer code reviews to maintain high code quality."
+            "Real-time data synchronization pipeline (DynamoDB Streams → Redpanda → PostgreSQL) with batch processing, reducing cross-database inconsistencies by 10% & eliminating manual data reconciliation.",
+            "UPI-Autopay SIP booking experience, including React Native UI and backend integrations, improving mandate success flow and driving a 35% increase in monthly sales.",
+            "In-house commission payout system using DuckDB & a custom rule engine, replacing outsourced workflows and reducing a 3–5 day manual process to an automated pipeline.",
+            "AI-powered portfolio assistant using RAG & prompt engineering, optimizing response quality and reducing LLM costs through token compression strategies",
+            "Scalable Fixed-Deposit booking system, enabling seamless investments across multiple banks and NBFCs with secure backend architecture and intuitive user flows."
           ]
         }
       ]
