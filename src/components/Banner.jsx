@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="w-full h-32 md:h-56 bg-card rounded-xl border border-border mt-4 mb-[-4rem] md:mb-[-5rem] relative overflow-hidden group">
+    <div className="w-full h-40 md:h-56 bg-card rounded-xl border border-border mt-4 mb-[-3rem] md:mb-[-5rem] relative overflow-hidden group">
       {/* Background patterns: subtle dot grid */}
       <div
         className="absolute inset-0 opacity-[0.03] dark:opacity-[0.1]"
@@ -26,7 +26,7 @@ const Banner = () => {
             </span>
           </div>
 
-          <h2 className="text-[13px] sm:text-base md:text-2xl lg:text-3xl font-semibold leading-tight text-foreground/90">
+          <h2 className="text-[15px] sm:text-base md:text-2xl lg:text-3xl font-semibold leading-tight text-foreground/90">
             I <span className="">understand</span> software{" "}
             <br className="hidden sm:block" />
             by{" "}
