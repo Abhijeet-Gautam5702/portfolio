@@ -28,14 +28,17 @@ const WorkExperience = () => {
                   </div>
                 </div>
                 {exp.company_type && (
-                  <span className="hidden md:inline-block text-xs md:text-sm px-2 py-0.5 border border-brand/30 rounded-full text-brand">
+                  <span className="hidden md:inline-block text-xs md:text-sm px-2 py-0.5 md:mr-auto border border-brand/30 rounded-full text-brand">
                     {exp.company_type}
                   </span>
                 )}
               </div>
 
               <p className="text-sm text-muted/80">
-                {exp.role} <span className="md:hidden text-muted/60 ml-1 italic font-mono text-[10px] uppercase">({exp.period})</span>
+                {exp.role}{" "}
+                <span className="md:hidden text-muted/60 ml-1 italic font-mono text-[10px] uppercase">
+                  ({exp.period})
+                </span>
               </p>
 
               <p className="text-sm text-muted mt-2 max-w-xl line-clamp-2 md:line-clamp-none">
