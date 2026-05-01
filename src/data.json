@@ -6,6 +6,11 @@
   },
   "socials": [
     {
+      "label": "Resume",
+      "href": "/resume",
+      "icon": "FaFilePdf"
+    },
+    {
       "label": "GitHub",
       "href": "https://github.com/Abhijeet-Gautam5702",
       "icon": "FaGithub"
@@ -19,11 +24,6 @@
       "label": "X",
       "href": "https://x.com/abhijeet_gautam",
       "icon": "FaXTwitter"
-    },
-    {
-      "label": "Resume",
-      "href": "/resume",
-      "icon": "FaFilePdf"
     },
     {
       "label": "Email",
