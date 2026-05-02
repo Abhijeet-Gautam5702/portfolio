@@ -93,6 +93,13 @@
       "rank": 3,
       "items": [
         {
+          "title": "Metadata vs. I/O: Why Moving Files is (Mostly) a Ledger Update",
+          "description": "Explore how most file moving operations work and how a simple CLI tool achieves 11GB/s logical file-moving throughput by staying metadata-bound.",
+          "date": "03 May '26",
+          "tags": ["Metadata Operations", "Low Level", "System Design"],
+          "link": "https://blogs.abhijeetgautam.in/metadata-vs-i-o-why-moving-files-is-mostly-a-ledger-update"
+        },
+        {
           "title": "How to secure your authentication using nonces",
           "description": "When authentication goes wrong, it's not just about losing data. Discover how nonces boost security in authentication systems.",
           "date": "16 Sep '25",
