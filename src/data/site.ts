@@ -1,5 +1,4 @@
 import type { ImageMetadata } from "astro";
-import authWaveThumbnail from "../assets/projects/authwave-thumbnail.png";
 
 export const site = {
   name: "Abhijeet Gautam",
@@ -110,27 +109,6 @@ export const projects: Project[] = [
     stars: 0,
     featured: true,
     mark: "fg",
-  },
-  {
-    name: "Auth Wave",
-    slug: "auth-wave",
-    description:
-      "Authentication and user-management infrastructure for modern web applications.",
-    longDescription:
-      "A secure, scalable authentication provider designed around clear integration paths and pragmatic application security.",
-    languages: [
-      { name: "TypeScript", color: "#3178c6" },
-      { name: "Node.js", color: "#4f8f45" },
-    ],
-    repository: "https://github.com/Auth-Wave",
-    liveUrl: "https://authwave.in",
-    stars: 3,
-    featured: true,
-    mark: "aw",
-    image: {
-      src: authWaveThumbnail,
-      alt: "Auth Wave authentication platform interface",
-    },
   },
 ];
 
