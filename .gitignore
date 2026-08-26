@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-*.png
-*jpeg
+context/
+.astro/

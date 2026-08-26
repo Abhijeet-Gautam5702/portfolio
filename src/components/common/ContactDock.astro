@@ -1,0 +1,19 @@
+---
+import { socials } from "../../data/site";
+import Icon from "./Icon.astro";
+---
+
+<aside class="contact-dock" aria-label="Quick contact">
+  {
+    socials.map((social) => (
+      <a
+        href={social.href}
+        target={social.href.startsWith("http") ? "_blank" : undefined}
+        rel={social.href.startsWith("http") ? "noreferrer" : undefined}
+      >
+        <Icon name={social.icon} size={19} />
+        <span>{social.label}</span>
+      </a>
+    ))
+  }
+</aside>

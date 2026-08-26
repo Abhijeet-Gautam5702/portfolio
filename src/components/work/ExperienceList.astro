@@ -1,0 +1,24 @@
+---
+import { experiences } from "../../data/site";
+import Icon from "../common/Icon.astro";
+---
+
+<div class="experience-list">
+  {
+    experiences.map((experience) => (
+      <a class="experience-row" href={`/work-experience/${experience.slug}`}>
+        <div>
+          <p class="list-meta">{experience.companyType}</p>
+          <h3>
+            {experience.company}
+            <span class="row-arrow">
+              <Icon name="arrow" size={20} />
+            </span>
+          </h3>
+        </div>
+        <p>{experience.role}</p>
+        <span>{experience.period}</span>
+      </a>
+    ))
+  }
+</div>

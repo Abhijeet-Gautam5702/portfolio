@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import { publishedPosts } from "../../utils/blog";
+
+const posts = publishedPosts(await getCollection("blog"));
+---
+
+<BaseLayout
+  title="Blog"
+  description="Technical writing by Abhijeet Gautam about backend systems, Rust, infrastructure, security, and developer tools."
+>
+  <section class="page-hero blog-index-hero">
+    <p class="eyebrow">Writing</p>
+    <h1>
+      Notes on systems, tools, and <span class="heading-highlight"
+        >learning by building</span
+      >.
+    </h1>
+    <p class="page-description">
+      Long-form explanations, implementation notes, and practical lessons from
+      working close to the infrastructure.
+    </p>
+  </section>
+
+  <section class="content-section">
+    <div class="list-grid">
+      {posts.map((post) => <BlogCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

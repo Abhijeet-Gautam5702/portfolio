@@ -1,0 +1,20 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  highlight?: string;
+}
+
+const { eyebrow, title, highlight } = Astro.props;
+const prefix =
+  highlight && title.endsWith(highlight)
+    ? title.slice(0, -highlight.length)
+    : title;
+---
+
+<div class="section-heading">
+  <p class="eyebrow">{eyebrow}</p>
+  <h2>
+    {prefix}{highlight && <span class="heading-highlight">{highlight}</span>}
+  </h2>
+</div>

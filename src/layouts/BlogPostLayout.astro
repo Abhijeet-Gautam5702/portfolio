@@ -1,0 +1,173 @@
+---
+import { Image } from "astro:assets";
+import type { MarkdownHeading } from "astro";
+import type { BlogPost } from "../utils/blog";
+import BaseLayout from "./BaseLayout.astro";
+import BlogCard from "../components/blog/BlogCard.astro";
+import Icon from "../components/common/Icon.astro";
+import { site } from "../data/site";
+import { formatDate } from "../utils/dates";
+import { readingTime } from "../utils/blog";
+
+interface Props {
+  post: BlogPost;
+  headings: MarkdownHeading[];
+  related?: BlogPost[];
+  previous?: BlogPost;
+  next?: BlogPost;
+}
+
+const { post, headings, related = [], previous, next } = Astro.props;
+const { data } = post;
+const toc = headings.filter((heading) => heading.depth === 2);
+const prefix =
+  data.highlight && data.title.endsWith(data.highlight)
+    ? data.title.slice(0, -data.highlight.length)
+    : data.title;
+---
+
+<BaseLayout
+  title={data.title}
+  description={data.description}
+  image={data.cover}
+  imageAlt={data.coverAlt}
+  type="article"
+  publishedAt={data.publishedAt}
+  updatedAt={data.updatedAt}
+  tags={data.tags}
+  category={data.category}
+  canonicalUrl={data.canonicalUrl}
+>
+  <article class="article-page">
+    <header class="article-hero">
+      <p class="eyebrow">{data.category}</p>
+      <h1>
+        {prefix}{
+          data.highlight && (
+            <span class="heading-highlight">{data.highlight}</span>
+          )
+        }
+      </h1>
+      <p class="article-description">{data.description}</p>
+      <div class="article-meta">
+        <time datetime={data.publishedAt.toISOString()}
+          >{formatDate(data.publishedAt)}</time
+        >
+        <span aria-hidden="true">•</span>
+        <span>{readingTime(post)} min read</span>
+        {
+          data.updatedAt && (
+            <>
+              <span aria-hidden="true">•</span>
+              <span>Updated {formatDate(data.updatedAt)}</span>
+            </>
+          )
+        }
+      </div>
+      <div class="tag-list" aria-label="Article tags">
+        {data.tags.map((tag) => <span>{tag}</span>)}
+      </div>
+    </header>
+
+    <div class="hatched-divider" aria-hidden="true"></div>
+
+    {
+      data.cover && (
+        <figure class="article-cover">
+          <Image
+            src={data.cover}
+            alt={data.coverAlt ?? ""}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 720px) 100vw, 1120px"
+            loading="eager"
+          />
+          {data.coverAlt && <figcaption>{data.coverAlt}</figcaption>}
+        </figure>
+      )
+    }
+
+    <div class="article-layout">
+      {
+        toc.length > 2 && (
+          <aside class="article-toc" aria-label="On this page">
+            <p class="eyebrow">On this page</p>
+            <nav>
+              {toc.map((heading) => (
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              ))}
+            </nav>
+          </aside>
+        )
+      }
+      <div class="article-body prose prose-zinc max-w-none">
+        <slot />
+      </div>
+    </div>
+
+    <footer class="article-footer">
+      <div class="article-nav">
+        {
+          previous ? (
+            <a href={`/blog/${previous.id}`}>
+              <span>Previous article</span>
+              <strong>{previous.data.title}</strong>
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          next && (
+            <a class="next" href={`/blog/${next.id}`}>
+              <span>Next article</span>
+              <strong>{next.data.title}</strong>
+            </a>
+          )
+        }
+      </div>
+      <a class="back-link" href="/blog"
+        ><Icon name="arrow" size={18} /> All writing</a
+      >
+    </footer>
+  </article>
+
+  {
+    related.length > 0 && (
+      <section class="content-section related-posts">
+        <div class="section-heading">
+          <p class="eyebrow">Keep reading</p>
+          <h2>
+            Related <span class="heading-highlight">notes</span>.
+          </h2>
+        </div>
+        <div class="list-grid">
+          {related.map((item) => (
+            <BlogCard post={item} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: data.title,
+      description: data.description,
+      datePublished: data.publishedAt.toISOString(),
+      dateModified: (data.updatedAt ?? data.publishedAt).toISOString(),
+      author: { "@type": "Person", name: site.name, url: site.url },
+      publisher: { "@type": "Person", name: site.name, url: site.url },
+      articleSection: data.category,
+      keywords: data.tags.join(", "),
+      image: data.cover
+        ? new URL(data.cover.src, Astro.site ?? Astro.url.origin).href
+        : undefined,
+      mainEntityOfPage: Astro.url.href,
+      url: Astro.url.href,
+    })}
+  />
+</BaseLayout>

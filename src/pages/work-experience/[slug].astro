@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icon from "../../components/common/Icon.astro";
+import { experiences } from "../../data/site";
+
+export function getStaticPaths() {
+  return experiences.map((experience) => ({
+    params: { slug: experience.slug },
+    props: { experience },
+  }));
+}
+
+const { experience } = Astro.props;
+---
+
+<BaseLayout
+  title={`${experience.role} at ${experience.company}`}
+  description={experience.description}
+>
+  <section class="page-hero">
+    <p class="eyebrow">{experience.companyType} · {experience.location}</p>
+    <h1>{experience.company}</h1>
+    <p class="page-description">{experience.role} · {experience.period}</p>
+  </section>
+  <section class="content-section">
+    <a class="back-link" href="/"
+      ><Icon name="arrow-left" size={18} /> Back home</a
+    >
+    <div class="detail-card">
+      <div class="detail-meta">
+        <strong>{experience.role}</strong>
+        <span>{experience.location} · {experience.period}</span>
+      </div>
+      <p class="page-description">{experience.description}</p>
+      <ul class="detail-list">
+        {experience.points.map((point) => <li>{point}</li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

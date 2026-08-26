@@ -1,0 +1,118 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogCard from "../components/blog/BlogCard.astro";
+import Icon from "../components/common/Icon.astro";
+import SectionHeading from "../components/common/SectionHeading.astro";
+import ProjectCard from "../components/projects/ProjectCard.astro";
+import { projects, site, socials, technologies } from "../data/site";
+import { publishedPosts } from "../utils/blog";
+
+const posts = publishedPosts(await getCollection("blog")).slice(0, 2);
+const homeProjects = projects.filter((project) =>
+  ["wish", "forg"].includes(project.slug),
+);
+---
+
+<BaseLayout>
+  <section class="home-hero">
+    <div class="home-hero-grid">
+      <div class="home-hero-copy">
+        <div class="status-pill">
+          <span>{site.availability}</span>
+          <a href={`mailto:${site.email}`}>Email</a>
+        </div>
+        <h1>
+          I build reliable systems and developer tools from <span
+            class="heading-highlight">first principles</span
+          >.
+        </h1>
+        <p class="hero-description">{site.hero.description}</p>
+      </div>
+      <div class="hero-portrait">
+        <img
+          src="https://github.com/Abhijeet-Gautam5702.png"
+          alt="Abhijeet Gautam"
+          width="460"
+          height="460"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <p class="portrait-caption">Backend · DevTools · Systems</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="technology-strip" aria-label="Technologies I work with">
+    <div class="technology-track">
+      <div class="technology-group">
+        {technologies.map((technology) => <span>{technology}</span>)}
+      </div>
+      <div class="technology-group" aria-hidden="true">
+        {technologies.map((technology) => <span>{technology}</span>)}
+      </div>
+    </div>
+  </div>
+
+  <section
+    id="featured-projects"
+    class="project-gallery"
+    aria-labelledby="featured-projects-heading"
+  >
+    <div id="featured-projects-heading">
+      <SectionHeading
+        eyebrow="Featured projects"
+        title="Software built to understand the systems underneath."
+        highlight="underneath."
+      />
+    </div>
+    {homeProjects.map((project) => <ProjectCard project={project} />)}
+    <div class="section-action">
+      <a class="button-link" href="/projects">
+        View all <Icon name="arrow" size={17} />
+      </a>
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="writing-heading">
+    <div id="writing-heading">
+      <SectionHeading
+        eyebrow="Latest writing"
+        title="Notes from building and learning in public."
+        highlight="in public."
+      />
+    </div>
+    <div class="list-grid">
+      {posts.map((post) => <BlogCard post={post} />)}
+    </div>
+    <div class="section-action">
+      <a class="button-link" href="/blog">
+        View all <Icon name="arrow" size={17} />
+      </a>
+    </div>
+  </section>
+
+  <section class="contact-section" aria-label="Get in touch">
+    <div class="contact-layout">
+      <SectionHeading
+        eyebrow="Get in touch"
+        title="Building a remote engineering team? Let’s talk."
+        highlight="Let’s talk."
+      />
+      <div class="contact-actions">
+        {
+          socials.map((social) => (
+            <a
+              href={social.href}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel={social.href.startsWith("http") ? "noreferrer" : undefined}
+            >
+              <Icon name={social.icon} size={18} />
+              <span>{social.label}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

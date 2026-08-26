@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { contributions } from "../../data/site";
+
+export function getStaticPaths() {
+  const repos = [...new Set(contributions.map((item) => item.repo))];
+  return ["all", ...repos].map((repoName) => ({
+    params: { repoName },
+    props: { repoName },
+  }));
+}
+
+const { repoName } = Astro.props;
+const items =
+  repoName === "all"
+    ? contributions
+    : contributions.filter((item) => item.repo === repoName);
+---
+
+<BaseLayout
+  title={`${repoName === "all" ? "Open-source" : repoName} contributions`}
+  description="Selected open-source pull requests by Abhijeet Gautam."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Open source</p>
+    <h1>
+      <span class="heading-highlight"
+        >{repoName === "all" ? "All" : repoName}</span
+      > contributions.
+    </h1>
+  </section>
+  <section class="content-section">
+    <div class="list-grid">
+      {
+        items.map((item) => (
+          <div class="list-item">
+            <div>
+              <>
+                <p class="list-meta">{item.repo}</p>
+                <h3 class="list-heading">{item.title}</h3>
+              </>
+            </div>
+            <div class="list-date">
+              <>
+                <span>{item.status}</span>
+                <span>{item.date}</span>
+              </>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

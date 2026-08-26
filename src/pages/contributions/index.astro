@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { contributions } from "../../data/site";
+---
+
+<BaseLayout
+  title="Open-source contributions"
+  description="Selected open-source contributions by Abhijeet Gautam."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Open source</p>
+    <h1>
+      Small improvements to <span class="heading-highlight"
+        >shared software</span
+      >.
+    </h1>
+  </section>
+  <section class="content-section">
+    <div class="list-grid">
+      {
+        contributions.map((item) => (
+          <div class="list-item">
+            <div>
+              <p class="list-meta">{item.repo}</p>
+              <h3 class="list-heading">{item.title}</h3>
+            </div>
+            <div class="list-date">
+              <>
+                <span>{item.status}</span>
+                <span>{item.date}</span>
+              </>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

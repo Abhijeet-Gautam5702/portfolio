@@ -1,0 +1,102 @@
+---
+import type { ImageMetadata } from "astro";
+import ContactDock from "../components/common/ContactDock.astro";
+import Footer from "../components/common/Footer.astro";
+import Header from "../components/common/Header.astro";
+import SeoHead from "../components/common/SeoHead.astro";
+import { site } from "../data/site";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string | ImageMetadata;
+  imageAlt?: string;
+  type?: "website" | "article";
+  publishedAt?: Date;
+  updatedAt?: Date;
+  tags?: string[];
+  category?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+  fullBleed?: boolean;
+  hideDock?: boolean;
+}
+
+const props = Astro.props;
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const analyticsBootstrap = measurementId
+  ? `window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag("js", new Date());
+gtag("config", ${JSON.stringify(measurementId)});`
+  : "";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SeoHead {...props} />
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem("portfolio-theme");
+        if (saved === "light" || saved === "dark") {
+          document.documentElement.dataset.theme = saved;
+        }
+      })();
+    </script>
+    {
+      measurementId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+          />
+          <script is:inline set:html={analyticsBootstrap} />
+        </>
+      )
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {!props.hideDock && <ContactDock />}
+    {
+      props.fullBleed ? (
+        <main id="main-content">
+          <slot />
+        </main>
+      ) : (
+        <div class="site-shell">
+          <Header />
+          <main id="main-content">
+            <slot />
+          </main>
+          <Footer />
+        </div>
+      )
+    }
+    <script is:inline define:vars={{ siteName: site.name }}>
+      document.addEventListener("click", (event) => {
+        const link = event.target.closest("a");
+        if (!link || typeof window.gtag !== "function") return;
+        const href = link.getAttribute("href") || "";
+        let eventName = null;
+        if (href.includes("github.com")) eventName = "github_project_click";
+        else if (href.startsWith("mailto:")) eventName = "contact_click";
+        else if (href.includes("ABHIJEET_GAUTAM_SDE.pdf") || href === "/resume")
+          eventName = "resume_download";
+        if (eventName)
+          window.gtag("event", eventName, {
+            link_url: href,
+            site_name: siteName,
+          });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ExperienceList from "../components/work/ExperienceList.astro";
+---
+
+<BaseLayout
+  title="Experience"
+  description="Professional experience shipping backend infrastructure and product work end to end. Open to remote engineering opportunities."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Experience</p>
+    <h1>
+      Shipping infrastructure and product work <span class="heading-highlight"
+        >end to end</span
+      >.
+    </h1>
+    <p class="page-description">
+      Roles where I have built dependable backend systems, data pipelines, and
+      customer-facing products from first principles. I’m currently looking to
+      join a thoughtful remote engineering team.
+    </p>
+  </section>
+
+  <section class="content-section" aria-label="Professional experience">
+    <ExperienceList />
+  </section>
+</BaseLayout>

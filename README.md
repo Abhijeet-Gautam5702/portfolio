@@ -1,16 +1,33 @@
-# React + Vite
+# Abhijeet Gautam — Portfolio and Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A static, content-first personal website built with Astro 6, TypeScript, Tailwind CSS 4, and Markdown/MDX Content Collections.
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+pnpm install
+pnpm dev
+pnpm check
+pnpm build
+pnpm preview
+```
 
-## React Compiler
+## Publish an article
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Create a directory under `src/content/blog` containing an `index.md` or `index.mdx` file. Images can live beside the article and be referenced with relative Markdown paths.
 
-## Expanding the ESLint configuration
+```text
+src/content/blog/my-article/
+├── index.md
+├── cover.svg
+└── diagram.png
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The required frontmatter is validated by `src/content.config.ts`. Set `draft: false`, run `pnpm check` and `pnpm build`, then push to the production branch.
+
+## Configuration
+
+- `SITE_URL` overrides the canonical site URL during the build.
+- `PUBLIC_GA_MEASUREMENT_ID` enables Google Analytics when provided.
+- Vercel build command: `pnpm build`
+- Vercel output directory: `dist`

@@ -1,0 +1,44 @@
+<button
+  class="theme-toggle"
+  type="button"
+  aria-label="Change color theme"
+  title="Theme: system"
+  data-theme-toggle
+>
+  <span aria-hidden="true" data-theme-icon>◐</span>
+</button>
+
+<script is:inline>
+  (() => {
+    if (window.__portfolioThemeToggleReady) return;
+    window.__portfolioThemeToggleReady = true;
+
+    const key = "portfolio-theme";
+    const order = ["system", "light", "dark"];
+    const icons = { system: "◐", light: "☼", dark: "☾" };
+    const root = document.documentElement;
+
+    function apply(value) {
+      if (value === "system") root.removeAttribute("data-theme");
+      else root.dataset.theme = value;
+
+      document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+        button.title = `Theme: ${value}`;
+        const icon = button.querySelector("[data-theme-icon]");
+        if (icon) icon.textContent = icons[value];
+      });
+    }
+
+    const saved = localStorage.getItem(key) || "system";
+    apply(order.includes(saved) ? saved : "system");
+
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-theme-toggle]");
+      if (!button) return;
+      const current = localStorage.getItem(key) || "system";
+      const next = order[(order.indexOf(current) + 1) % order.length];
+      localStorage.setItem(key, next);
+      apply(next);
+    });
+  })();
+</script>

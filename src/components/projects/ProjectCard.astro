@@ -1,0 +1,122 @@
+---
+import { Image } from "astro:assets";
+import type { Project } from "../../data/site";
+import Icon from "../common/Icon.astro";
+
+interface Props {
+  project: Project;
+  large?: boolean;
+}
+
+const { project, large = false } = Astro.props;
+
+type MarkPart = {
+  text: string;
+  expands: boolean;
+};
+
+const getMarkParts = (name: string, mark: string): MarkPart[] => {
+  const fullName = name.toLowerCase();
+  const initials = mark.toLowerCase();
+  const parts: MarkPart[] = [];
+  let cursor = 0;
+
+  for (const initial of initials) {
+    const initialIndex = fullName.indexOf(initial, cursor);
+
+    if (initialIndex === -1) {
+      return [
+        { text: initials, expands: false },
+        { text: fullName.slice(initials.length), expands: true },
+      ];
+    }
+
+    if (initialIndex > cursor) {
+      parts.push({ text: fullName.slice(cursor, initialIndex), expands: true });
+    }
+
+    parts.push({ text: fullName[initialIndex], expands: false });
+    cursor = initialIndex + 1;
+  }
+
+  if (cursor < fullName.length) {
+    parts.push({ text: fullName.slice(cursor), expands: true });
+  }
+
+  return parts;
+};
+
+const markParts = project.image ? [] : getMarkParts(project.name, project.mark);
+---
+
+<article class:list={["project-card", { large }]}>
+  <a
+    class="project-visual"
+    href={project.repository}
+    target="_blank"
+    rel="noreferrer"
+    aria-label={`Open ${project.name} on GitHub`}
+  >
+    <span class="project-grid" aria-hidden="true"></span>
+    {
+      project.image ? (
+        <Image
+          class="project-image"
+          src={project.image.src}
+          alt={project.image.alt}
+          loading="lazy"
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 720px) 100vw, 1120px"
+        />
+      ) : (
+        <span class="project-mark" aria-hidden="true">
+          {markParts.map((part) =>
+            part.expands ? (
+              <span class="project-mark-expansion">
+                <span>{part.text}</span>
+              </span>
+            ) : (
+              <span>{part.text}</span>
+            ),
+          )}
+        </span>
+      )
+    }
+    <div class="project-terminal" aria-hidden="true">
+      <span>$</span> git clone {
+        project.repository.replace("https://github.com/", "")
+      }
+    </div>
+  </a>
+  <div class="project-content">
+    <div class="project-head">
+      <h3>
+        <a href={project.repository} target="_blank" rel="noreferrer"
+          >{project.name}</a
+        >
+        {project.status && <span class="project-status">{project.status}</span>}
+        <span class="row-arrow"><Icon name="arrow" size={22} /></span>
+      </h3>
+      <div class="project-languages">
+        {
+          project.languages.map((language) => (
+            <span style={`--language-color:${language.color}`}>
+              {language.name}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <p>{project.description}</p>
+    <div class="project-links">
+      <a href={project.repository} target="_blank" rel="noreferrer">Source</a>
+      {
+        project.liveUrl && (
+          <a href={project.liveUrl} target="_blank" rel="noreferrer">
+            Live
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

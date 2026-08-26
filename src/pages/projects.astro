@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/projects/ProjectCard.astro";
+import { projects } from "../data/site";
+---
+
+<BaseLayout
+  title="Projects"
+  description="Developer tools, backend systems, and infrastructure projects built by Abhijeet Gautam."
+>
+  <section class="page-hero">
+    <p class="eyebrow">Selected projects</p>
+    <h1>
+      Systems experiments and <span class="heading-highlight"
+        >useful software</span
+      >.
+    </h1>
+    <p class="page-description">
+      A collection of tools and services built to understand filesystems,
+      messaging, authentication, and dependable backend architecture.
+    </p>
+  </section>
+
+  <section class="project-gallery" aria-label="All projects">
+    {projects.map((project) => <ProjectCard project={project} large />)}
+  </section>
+</BaseLayout>

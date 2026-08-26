@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/common/Icon.astro";
+---
+
+<BaseLayout
+  title="Resume"
+  description="Resume of Abhijeet Gautam."
+  fullBleed
+  hideDock
+>
+  <div class="resume-page">
+    <div class="resume-toolbar">
+      <a href="/"><Icon name="arrow-left" size={18} /> Back home</a>
+      <a class="button-link" href="/ABHIJEET_GAUTAM_SDE.pdf" download
+        ><Icon name="resume" size={18} /> Download PDF</a
+      >
+    </div>
+    <iframe
+      class="resume-frame"
+      src="/ABHIJEET_GAUTAM_SDE.pdf"
+      title="Abhijeet Gautam resume"></iframe>
+    <div class="mobile-resume">
+      <h1>Resume</h1>
+      <p>
+        PDF previews vary across mobile browsers. Download the file for the best
+        reading experience.
+      </p>
+      <a class="button-link" href="/ABHIJEET_GAUTAM_SDE.pdf" download
+        ><Icon name="resume" size={18} /> Download resume</a
+      >
+    </div>
+  </div>
+</BaseLayout>

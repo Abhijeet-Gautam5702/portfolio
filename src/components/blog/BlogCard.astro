@@ -1,0 +1,29 @@
+---
+import type { BlogPost } from "../../utils/blog";
+import Icon from "../common/Icon.astro";
+import { formatDate } from "../../utils/dates";
+import { readingTime } from "../../utils/blog";
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<a class="list-item blog-card" href={`/blog/${post.id}`}>
+  <div>
+    <p class="list-meta">{post.data.category}</p>
+    <h3 class="list-heading">
+      {post.data.title}
+      <span class="row-arrow"><Icon name="arrow" size={21} /></span>
+    </h3>
+    <p class="list-description">{post.data.description}</p>
+  </div>
+  <div class="list-date">
+    <time datetime={post.data.publishedAt.toISOString()}
+      >{formatDate(post.data.publishedAt)}</time
+    >
+    <span>{readingTime(post)} min</span>
+  </div>
+</a>
