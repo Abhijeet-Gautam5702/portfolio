@@ -108,7 +108,7 @@ const prefix =
       <div class="article-nav">
         {
           previous ? (
-            <a href={`/blog/${previous.id}`}>
+            <a href={`/engineer/blog/${previous.id}`}>
               <span>Previous article</span>
               <strong>{previous.data.title}</strong>
             </a>
@@ -118,14 +118,14 @@ const prefix =
         }
         {
           next && (
-            <a class="next" href={`/blog/${next.id}`}>
+            <a class="next" href={`/engineer/blog/${next.id}`}>
               <span>Next article</span>
               <strong>{next.data.title}</strong>
             </a>
           )
         }
       </div>
-      <a class="back-link" href="/blog"
+      <a class="back-link" href="/engineer/blog"
         ><Icon name="arrow" size={18} /> All writing</a
       >
     </footer>

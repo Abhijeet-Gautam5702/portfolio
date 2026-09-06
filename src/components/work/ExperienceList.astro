@@ -6,7 +6,10 @@ import Icon from "../common/Icon.astro";
 <div class="experience-list">
   {
     experiences.map((experience) => (
-      <a class="experience-row" href={`/work-experience/${experience.slug}`}>
+      <a
+        class="experience-row"
+        href={`/engineer/work-experience/${experience.slug}`}
+      >
         <div>
           <p class="list-meta">{experience.companyType}</p>
           <h3>

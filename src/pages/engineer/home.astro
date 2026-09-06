@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogCard from "../components/blog/BlogCard.astro";
-import Icon from "../components/common/Icon.astro";
-import SectionHeading from "../components/common/SectionHeading.astro";
-import ProjectCard from "../components/projects/ProjectCard.astro";
-import { projects, site, socials, technologies } from "../data/site";
-import { publishedPosts } from "../utils/blog";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import Icon from "../../components/common/Icon.astro";
+import SectionHeading from "../../components/common/SectionHeading.astro";
+import ProjectCard from "../../components/projects/ProjectCard.astro";
+import { projects, site, socials, technologies } from "../../data/site";
+import { publishedPosts } from "../../utils/blog";
 
 const posts = publishedPosts(await getCollection("blog")).slice(0, 2);
 const homeProjects = projects.filter((project) =>
@@ -68,7 +68,7 @@ const homeProjects = projects.filter((project) =>
     </div>
     {homeProjects.map((project) => <ProjectCard project={project} />)}
     <div class="section-action">
-      <a class="button-link" href="/projects">
+      <a class="button-link" href="/engineer/projects">
         View all <Icon name="arrow" size={17} />
       </a>
     </div>
@@ -86,7 +86,7 @@ const homeProjects = projects.filter((project) =>
       {posts.map((post) => <BlogCard post={post} />)}
     </div>
     <div class="section-action">
-      <a class="button-link" href="/blog">
+      <a class="button-link" href="/engineer/blog">
         View all <Icon name="arrow" size={17} />
       </a>
     </div>

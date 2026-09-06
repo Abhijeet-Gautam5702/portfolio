@@ -21,7 +21,9 @@ A terminal has split personalities -- it can function in a **raw** or a **cooked
 I tried to understand this difference by building a working Unix-like shell myself, from scratch in Rust. Continuing the legacy of shells like _bash, zsh, and fish_, I chose to name my shell - **[Wish](https://github.com/Abhijeet-Gautam5702/wish)**.
 
 ## The cooked mode
+
 In the cooked (or canonical) mode, the terminal takes care of a lot of things itself. It:
+
 - buffers the user input intil a new line (Enter/Return key-press)
 - echoes the typed user input
 - lets the user perform basic editing
@@ -30,10 +32,13 @@ In the cooked (or canonical) mode, the terminal takes care of a lot of things it
 Basically, a lot of pre-processing happens on the keystrokes entered by the user, before they even reach the shell program working beneath the terminal. This makes the cooked mode suitable for executing commands and other programs.
 
 ## The raw mode
+
 Before the command execution even starts, the shell has to decide what actions to perform based on what keys are pressed. Terminal's raw mode allows the key stroke bytes to reach the shell directly, without any pre-processing, so the shell can decide the parsing and the further actions to be performed. This helps the shell programmer map different keystroke combinations to actions. For instance, in Wish, I decided the `Esc` key would exit the shell.
 
 ### How Wish makes use of raw mode?
+
 Like any shell, Wish also utilises the terminal's raw mode to interpret key press events on its own and map actions to each event. Here is a simplified excerpt from the Wish's source code (using `crossterm` crate) that demonstrates the raw key bytes as decides what action to take.
+
 ```rust
 fn run_shell() -> Result<(), io::Error> {
     loop {
@@ -79,6 +84,7 @@ fn run_shell() -> Result<(), io::Error> {
 ```
 
 ### Raw mode also makes Wish responsible for the screen
+
 In cooked mode, the terminal normally echoes what the user types and removes characters when Backspace is pressed. Raw mode gives that responsibility to Wish. Updating `input_line` is not enough; the shell must also update what the user sees.
 
 Wish does this by redrawing the current prompt (using `crossterm`) after every visible change:
@@ -112,6 +118,7 @@ The function moves to the start of the row, clears the old text, and prints the 
 The `TerminalRawMode` guard belongs to one prompt's input-editing phase, not the entire shell process. Wish creates a new guard when it starts reading a command and drops it when raw mode is no longer needed. I will come to it a little later in the blog.
 
 ## Running user commands requires cooked mode
+
 Like many other shells, Wish uses raw mode only while reading and editing a command. Before it runs that command, it returns the terminal to cooked mode so the program starts with the normal terminal behaviour it expects.
 
 If Wish left the terminal in raw mode, typed characters might not appear on the screen, Enter and Backspace might not behave normally (because Wish handles them separately). The command could appear broken or unresponsive even though it is running correctly.
@@ -158,6 +165,7 @@ fn execute_command(/* ... */) -> Result<bool, io::Error> {
 ```
 
 ## Safeguarding shell program panics and sudden shutdowns
+
 Raw mode changes the state of the terminal itself. If Wish stops without undoing that change, the next program may inherit a terminal with no input echo and unusual key behaviour. Calling `disable_raw_mode()` manually on every possible exit path would be easy to forget.
 
 Wish handles this with a small guard:
@@ -185,6 +193,7 @@ The guard exists for as long as raw mode is active. When it leaves scope, Rust a
 > This cannot protect against every shutdown. A forced kill such as `SIGKILL`, a process abort, or a machine losing power gives the program no chance to run `Drop`. In those cases, the terminal may still need to be repaired manually with a command such as `reset`.
 
 ## Raw mode gives control, and responsibility
+
 Building Wish made raw and cooked mode are like two parts of the same conversation. Cooked mode gives programs familiar input behaviour. Raw mode gives the shell direct control over every key press. A useful shell needs to move between both at the right time.
 
 The deeper lesson is that terminal mode is shared state. Once a program changes it, that program is responsible for restoring it before another command takes over or the program exits. Rust's `Drop` mechanism makes that responsibility much harder to forget, and leaves the user's terminal behaving as expected.

@@ -89,7 +89,10 @@ gtag("config", ${JSON.stringify(measurementId)});`
         let eventName = null;
         if (href.includes("github.com")) eventName = "github_project_click";
         else if (href.startsWith("mailto:")) eventName = "contact_click";
-        else if (href.includes("ABHIJEET_GAUTAM_SDE.pdf") || href === "/resume")
+        else if (
+          href.includes("ABHIJEET_GAUTAM_SDE.pdf") ||
+          href === "/engineer/resume"
+        )
           eventName = "resume_download";
         if (eventName)
           window.gtag("event", eventName, {
@@ -102,7 +105,6 @@ gtag("config", ${JSON.stringify(measurementId)});`
       is:inline
       type="module"
       src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token":"fd9d207d106f47b2a220e87f13aad9a2"}'
-    ></script>
+      data-cf-beacon='{"token":"fd9d207d106f47b2a220e87f13aad9a2"}'></script>
   </body>
 </html>

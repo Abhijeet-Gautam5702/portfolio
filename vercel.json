@@ -1,0 +1,75 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/engineer/home",
+      "statusCode": 301
+    },
+    {
+      "source": "/home",
+      "destination": "/engineer/home",
+      "statusCode": 301
+    },
+    {
+      "source": "/projects/all",
+      "destination": "/engineer/projects",
+      "statusCode": 301
+    },
+    {
+      "source": "/projects",
+      "destination": "/engineer/projects",
+      "statusCode": 301
+    },
+    {
+      "source": "/experience",
+      "destination": "/engineer/experience",
+      "statusCode": 301
+    },
+    {
+      "source": "/blogs/all",
+      "destination": "/engineer/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "/engineer/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/engineer/blog/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/contributions",
+      "destination": "/engineer/contributions",
+      "statusCode": 301
+    },
+    {
+      "source": "/contributions/:path*",
+      "destination": "/engineer/contributions/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/experience/:path*",
+      "destination": "/engineer/experience/:path*",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy",
+      "destination": "/engineer/privacy",
+      "statusCode": 301
+    },
+    {
+      "source": "/resume",
+      "destination": "/engineer/resume",
+      "statusCode": 301
+    },
+    {
+      "source": "/work-experience/:path*",
+      "destination": "/engineer/work-experience/:path*",
+      "statusCode": 301
+    }
+  ]
+}

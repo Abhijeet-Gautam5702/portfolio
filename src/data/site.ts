@@ -17,15 +17,15 @@ export const site = {
       "I’m a backend and devtools engineer who enjoys building systems from scratch. I mostly work in TypeScript and Rust, and like understanding how things work at their core.",
   },
   nav: [
-    { label: "Home", href: "/" },
-    { label: "Projects", href: "/projects" },
-    { label: "Experience", href: "/experience" },
-    { label: "Blog", href: "/blog" },
+    { label: "Home", href: "/engineer/home" },
+    { label: "Projects", href: "/engineer/projects" },
+    { label: "Experience", href: "/engineer/experience" },
+    { label: "Blog", href: "/engineer/blog" },
   ],
 } as const;
 
 export const socials = [
-  { label: "Resume", href: "/resume", icon: "resume" },
+  { label: "Resume", href: "/engineer/resume", icon: "resume" },
   { label: "Mail", href: `mailto:${site.email}`, icon: "mail" },
   { label: "X", href: "https://x.com/abhijeet_gautam", icon: "x" },
   {

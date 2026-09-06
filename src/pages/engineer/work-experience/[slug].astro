@@ -1,7 +1,7 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Icon from "../../components/common/Icon.astro";
-import { experiences } from "../../data/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Icon from "../../../components/common/Icon.astro";
+import { experiences } from "../../../data/site";
 
 export function getStaticPaths() {
   return experiences.map((experience) => ({
@@ -23,7 +23,7 @@ const { experience } = Astro.props;
     <p class="page-description">{experience.role} · {experience.period}</p>
   </section>
   <section class="content-section">
-    <a class="back-link" href="/"
+    <a class="back-link" href="/engineer/home"
       ><Icon name="arrow-left" size={18} /> Back home</a
     >
     <div class="detail-card">

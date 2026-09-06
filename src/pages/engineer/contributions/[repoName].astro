@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { contributions } from "../../data/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { contributions } from "../../../data/site";
 
 export function getStaticPaths() {
   const repos = [...new Set(contributions.map((item) => item.repo))];
