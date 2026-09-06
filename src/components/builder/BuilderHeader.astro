@@ -1,0 +1,104 @@
+---
+import Icon from "../common/Icon.astro";
+import ThemeToggle from "../common/ThemeToggle.astro";
+
+const nav = [
+  { label: "Home", href: "/builder/home" },
+  { label: "Products", href: "/builder/products" },
+  { label: "Goals", href: "/builder/goals" },
+] as const;
+
+const pathname = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/builder/home"
+    ? pathname === "/builder" || pathname === "/builder/" || pathname === href
+    : pathname.startsWith(href);
+---
+
+<header class="site-header" data-builder-header>
+  <a class="brand" href="/builder/home" aria-label="Abhijeet Gautam, Product Builder home">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 17 17" fill="none">
+        <path
+          d="M7.03.8c.21-1.07 1.74-1.07 1.96 0l.92 4.52c.08.4.39.7.78.78l4.52.93c1.07.21 1.07 1.74 0 1.96l-4.52.92c-.39.08-.7.39-.78.78l-.92 4.52c-.22 1.07-1.75 1.07-1.96 0L6.1 10.7a1 1 0 0 0-.78-.78L.8 8.99c-1.07-.22-1.07-1.75 0-1.96l4.52-.93a1 1 0 0 0 .78-.78z"
+          fill="currentColor"></path>
+      </svg>
+    </span>
+    <span class="brand-name">Abhijeet Gautam</span>
+    <span class="brand-role">/ Product Builder</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Builder navigation">
+    {nav.map((item) => (
+      <a class:list={[{ active: isActive(item.href) }]} href={item.href}>
+        {item.label}
+      </a>
+    ))}
+    <ThemeToggle />
+  </nav>
+
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="builder-mobile-navigation"
+    aria-label="Open navigation"
+    data-builder-nav-toggle
+  >
+    <span class="menu-icon"><Icon name="menu" size={28} /></span>
+    <span class="close-icon"><Icon name="close" size={28} /></span>
+  </button>
+</header>
+
+<div class="mobile-nav-overlay" data-builder-nav-overlay></div>
+<div
+  class="mobile-nav-panel"
+  id="builder-mobile-navigation"
+  aria-hidden="true"
+  data-builder-nav-panel
+>
+  <nav aria-label="Builder navigation">
+    {nav.map((item) => (
+      <a class:list={["mobile-nav-link", { active: isActive(item.href) }]} href={item.href}>
+        {item.label}
+      </a>
+    ))}
+    <div class="mobile-theme-row">
+      <span>Color theme</span>
+      <ThemeToggle />
+    </div>
+  </nav>
+</div>
+
+<script>
+  const header = document.querySelector("[data-builder-header]");
+  const toggle = document.querySelector("[data-builder-nav-toggle]");
+  const panel = document.querySelector("[data-builder-nav-panel]");
+  const overlay = document.querySelector("[data-builder-nav-overlay]");
+
+  const closeMenu = () => {
+    document.body.classList.remove("nav-open");
+    toggle?.setAttribute("aria-expanded", "false");
+    toggle?.setAttribute("aria-label", "Open navigation");
+    panel?.setAttribute("aria-hidden", "true");
+  };
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    if (open) closeMenu();
+    else {
+      document.body.classList.add("nav-open");
+      toggle.setAttribute("aria-expanded", "true");
+      toggle.setAttribute("aria-label", "Close navigation");
+      panel?.setAttribute("aria-hidden", "false");
+    }
+  });
+
+  overlay?.addEventListener("click", closeMenu);
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeMenu();
+  });
+  window.addEventListener("scroll", () => {
+    header?.classList.toggle("scrolled", window.scrollY > 8);
+  }, { passive: true });
+</script>

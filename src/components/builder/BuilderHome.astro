@@ -1,0 +1,76 @@
+<section class="page-hero builder-hero">
+  <p class="eyebrow">Solo builder</p>
+  <h1>
+    Making useful things, <span class="heading-highlight"
+      >one step at a time.</span>
+  </h1>
+  <p class="page-description">
+    A space for the products I’m exploring, the lessons I’m collecting, and the
+    goals that keep me moving.
+  </p>
+</section>
+
+<section class="builder-links" aria-label="Explore builder work">
+  <a href="/builder/products">
+    <span>01</span>
+    <div>
+      <h2>Products</h2><p>
+        Things I’m shaping from an idea into something useful.
+      </p>
+    </div>
+  </a>
+  <a href="/builder/goals">
+    <span>02</span>
+    <div>
+      <h2>Goals</h2><p>The direction, experiments, and milestones ahead.</p>
+    </div>
+  </a>
+</section>
+
+<style>
+  .builder-hero {
+    padding-bottom: 3.25rem;
+  }
+  .builder-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding-bottom: var(--section-gap);
+  }
+  .builder-links a {
+    display: flex;
+    min-height: 14rem;
+    gap: 1.1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    background: var(--paper-soft);
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease;
+  }
+  .builder-links a:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .builder-links span {
+    color: var(--label);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: -0.04em;
+  }
+  p {
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .builder-links {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

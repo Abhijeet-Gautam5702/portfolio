@@ -1,0 +1,27 @@
+---
+import BuilderLayout from "../../layouts/BuilderLayout.astro";
+
+const goals = [
+  "Ship products that solve a clear, everyday problem.",
+  "Learn directly from the people who use them.",
+  "Keep building small, sustainable systems with room to grow.",
+];
+---
+
+<BuilderLayout title="Goals" description="The goals guiding Abhijeet Gautam's solo-builder journey.">
+  <section class="page-hero">
+    <p class="eyebrow">Goals</p>
+    <h1>A deliberate path, <span class="heading-highlight">not a rush</span>.</h1>
+    <p class="page-description">A few guiding principles for what I want to make, learn, and improve as a solo builder.</p>
+  </section>
+  <ol class="goals-list">
+    {goals.map((goal, index) => <li><span>0{index + 1}</span><p>{goal}</p></li>)}
+  </ol>
+</BuilderLayout>
+
+<style>
+  .goals-list { margin: 0 0 var(--section-gap); padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  li { display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+  span { color: var(--label); font-size: .82rem; font-weight: 700; }
+  p { max-width: 42rem; margin: 0; font-size: clamp(1.12rem, 2vw, 1.45rem); letter-spacing: -.025em; line-height: 1.45; }
+</style>

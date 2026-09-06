@@ -1,0 +1,22 @@
+---
+import BuilderLayout from "../../layouts/BuilderLayout.astro";
+---
+
+<BuilderLayout title="Products" description="Products being explored and built by Abhijeet Gautam.">
+  <section class="page-hero">
+    <p class="eyebrow">Products</p>
+    <h1>Small ideas, <span class="heading-highlight">built with care</span>.</h1>
+    <p class="page-description">An evolving collection of products and experiments I’m taking from the first sketch to the hands of real people.</p>
+  </section>
+  <section class="empty-state" aria-label="Products coming soon">
+    <p class="eyebrow">In progress</p>
+    <h2>The first product is taking shape.</h2>
+    <p>Come back soon for the story behind it.</p>
+  </section>
+</BuilderLayout>
+
+<style>
+  .empty-state { margin-bottom: var(--section-gap); padding: 3rem; border: 1px solid var(--line); border-radius: 1.25rem; background: var(--paper-soft); }
+  h2 { margin: .6rem 0; font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.05em; }
+  p { color: var(--muted); line-height: 1.6; }
+</style>

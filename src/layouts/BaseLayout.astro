@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from "astro";
 import ContactDock from "../components/common/ContactDock.astro";
+import BuilderHeader from "../components/builder/BuilderHeader.astro";
 import Footer from "../components/common/Footer.astro";
 import Header from "../components/common/Header.astro";
 import SeoHead from "../components/common/SeoHead.astro";
@@ -21,6 +22,7 @@ interface Props {
   noindex?: boolean;
   fullBleed?: boolean;
   hideDock?: boolean;
+  headerVariant?: "engineer" | "builder";
 }
 
 const props = Astro.props;
@@ -72,8 +74,13 @@ gtag("config", ${JSON.stringify(measurementId)});`
           <slot />
         </main>
       ) : (
-        <div class="site-shell">
-          <Header />
+        <div
+          class:list={[
+            "site-shell",
+            { "builder-site-shell": props.headerVariant === "builder" },
+          ]}
+        >
+          {props.headerVariant === "builder" ? <BuilderHeader /> : <Header />}
           <main id="main-content">
             <slot />
           </main>

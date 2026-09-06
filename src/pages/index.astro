@@ -1,0 +1,189 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Abhijeet Gautam"
+  description="Choose between Abhijeet Gautam's engineering work and solo-builder journey."
+  fullBleed
+  hideDock
+>
+  <section class="path-chooser" aria-label="Choose an area to explore">
+    <a class="path-card engineer-card" href="/engineer/home">
+      <div class="path-card-content">
+        <h1>ENGINEER</h1>
+        <p>Explore my GitHub, work experience, technical projects and blogs</p>
+      </div>
+    </a>
+
+    <a class="path-card builder-card" href="/builder/home">
+      <div class="path-card-content">
+        <h1>BUILDER</h1>
+        <p>Explore my products, journey &amp; goals as a solo builder</p>
+      </div>
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .path-chooser {
+    display: grid;
+    width: min(100% - 2rem, 1120px);
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: 1rem 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .path-card {
+    position: relative;
+    display: grid;
+    min-height: min(72vh, 540px);
+    aspect-ratio: 1;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 2rem;
+    background: var(--card-surface);
+    color: var(--text);
+    text-align: center;
+    text-decoration: none;
+    transition:
+      transform 260ms ease,
+      border-color 260ms ease,
+      box-shadow 260ms ease,
+      background-color 180ms ease;
+  }
+
+  .path-card::before {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+    content: "";
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 24%,
+      black 76%,
+      transparent
+    );
+    opacity: 0.55;
+    transition: opacity 260ms ease;
+  }
+
+  .path-card::after {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--card-glow) 32%, transparent);
+    content: "";
+    filter: blur(8px);
+    opacity: 0;
+    transform: scale(0.65);
+    transition:
+      opacity 280ms ease,
+      transform 360ms ease;
+  }
+
+  .path-card-content {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 3rem, 26rem);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(2.75rem, 5.4vw, 5rem);
+    font-weight: 760;
+    letter-spacing: -0.075em;
+    line-height: 0.9;
+  }
+
+  p {
+    max-width: 20rem;
+    margin: 1.35rem auto 0;
+    color: var(--muted);
+    font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+    line-height: 1.55;
+  }
+
+  .engineer-card {
+    --card-surface: #eef4ff;
+    --card-glow: #86a8f2;
+  }
+
+  .builder-card {
+    --card-surface: #f7f0e7;
+    --card-glow: #dca86b;
+  }
+
+  :global([data-theme="dark"]) .engineer-card {
+    --card-surface: #182033;
+    --card-glow: #6589d8;
+  }
+
+  :global([data-theme="dark"]) .builder-card {
+    --card-surface: #292018;
+    --card-glow: #c7864a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme="light"])) .engineer-card {
+      --card-surface: #182033;
+      --card-glow: #6589d8;
+    }
+
+    :global(:root:not([data-theme="light"])) .builder-card {
+      --card-surface: #292018;
+      --card-glow: #c7864a;
+    }
+  }
+
+  .path-card:hover,
+  .path-card:focus-visible {
+    border-color: color-mix(in srgb, var(--accent) 52%, var(--line));
+    box-shadow: 0 22px 56px rgb(15 23 42 / 10%);
+    transform: translateY(-6px);
+  }
+
+  .path-card:hover::before,
+  .path-card:focus-visible::before {
+    opacity: 0.82;
+  }
+
+  .path-card:hover::after,
+  .path-card:focus-visible::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @media (max-width: 720px) {
+    .path-chooser {
+      width: min(100% - 1.5rem, 34rem);
+      padding: 0.75rem 0;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-content: center;
+    }
+
+    .path-card {
+      min-height: 0;
+      aspect-ratio: 1.35;
+      border-radius: 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .path-card,
+    .path-card::before,
+    .path-card::after {
+      transition: none;
+    }
+  }
+</style>

@@ -22,7 +22,6 @@ export default defineConfig({
     },
   },
   redirects: {
-    "/": "/engineer/home",
     "/home": "/engineer/home",
     "/blogs/all": "/engineer/blog",
     "/blog": "/engineer/blog",
