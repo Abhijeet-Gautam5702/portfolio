@@ -9,17 +9,38 @@ const isActive = (href: string) =>
 ---
 
 <header class="site-header" data-header>
-  <a class="brand" href="/engineer/home" aria-label={`${site.name} home`}>
-    <span class="brand-mark" aria-hidden="true">
-      <svg viewBox="0 0 17 17" fill="none">
-        <path
-          d="M7.03.8c.21-1.07 1.74-1.07 1.96 0l.92 4.52c.08.4.39.7.78.78l4.52.93c1.07.21 1.07 1.74 0 1.96l-4.52.92c-.39.08-.7.39-.78.78l-.92 4.52c-.22 1.07-1.75 1.07-1.96 0L6.1 10.7a1 1 0 0 0-.78-.78L.8 8.99c-1.07-.22-1.07-1.75 0-1.96l4.52-.93a1 1 0 0 0 .78-.78z"
-          fill="currentColor"></path>
+  <div class="profile-switcher" data-profile-switcher>
+    <button
+      class="brand profile-trigger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="profile-menu"
+      aria-label="Switch profile"
+      data-profile-trigger
+    >
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 17 17" fill="none">
+          <path
+            d="M7.03.8c.21-1.07 1.74-1.07 1.96 0l.92 4.52c.08.4.39.7.78.78l4.52.93c1.07.21 1.07 1.74 0 1.96l-4.52.92c-.39.08-.7.39-.78.78l-.92 4.52c-.22 1.07-1.75 1.07-1.96 0L6.1 10.7a1 1 0 0 0-.78-.78L.8 8.99c-1.07-.22-1.07-1.75 0-1.96l4.52-.93a1 1 0 0 0 .78-.78z"
+            fill="currentColor"></path>
+        </svg>
+      </span>
+      <span class="brand-name">{site.shortName}</span>
+      <span class="brand-role">/ Engineer</span>
+      <svg class="profile-caret" aria-hidden="true" viewBox="0 0 12 8" fill="none">
+        <path d="m1 1.25 5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
-    </span>
-    <span class="brand-name">{site.shortName}</span>
-    <span class="brand-role">/ {site.role.replace(" Engineer", "")}</span>
-  </a>
+    </button>
+
+    <div class="profile-menu" id="profile-menu" role="menu" hidden data-profile-menu>
+      <a class="profile-option active" href="/engineer/home" role="menuitem">
+        Abhijeet / Engineer
+      </a>
+      <a class="profile-option" href="/builder/home" role="menuitem">
+        Abhijeet / Product Builder
+      </a>
+    </div>
+  </div>
 
   <nav class="desktop-nav" aria-label="Primary navigation">
     {
@@ -75,12 +96,20 @@ const isActive = (href: string) =>
   const toggle = document.querySelector("[data-nav-toggle]");
   const panel = document.querySelector("[data-nav-panel]");
   const overlay = document.querySelector("[data-nav-overlay]");
+  const profileSwitcher = document.querySelector("[data-profile-switcher]");
+  const profileTrigger = document.querySelector("[data-profile-trigger]");
+  const profileMenu = document.querySelector("[data-profile-menu]");
 
   const closeMenu = () => {
     document.body.classList.remove("nav-open");
     toggle?.setAttribute("aria-expanded", "false");
     toggle?.setAttribute("aria-label", "Open navigation");
     panel?.setAttribute("aria-hidden", "true");
+  };
+
+  const closeProfileMenu = () => {
+    profileTrigger?.setAttribute("aria-expanded", "false");
+    profileMenu?.setAttribute("hidden", "");
   };
 
   toggle?.addEventListener("click", () => {
@@ -95,8 +124,22 @@ const isActive = (href: string) =>
   });
 
   overlay?.addEventListener("click", closeMenu);
+  profileTrigger?.addEventListener("click", () => {
+    const open = profileTrigger.getAttribute("aria-expanded") === "true";
+    if (open) closeProfileMenu();
+    else {
+      profileTrigger.setAttribute("aria-expanded", "true");
+      profileMenu?.removeAttribute("hidden");
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (!profileSwitcher?.contains(event.target as Node)) closeProfileMenu();
+  });
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
+    if (event.key === "Escape") {
+      closeMenu();
+      closeProfileMenu();
+    }
   });
   window.addEventListener(
     "scroll",
@@ -106,3 +149,66 @@ const isActive = (href: string) =>
     { passive: true },
   );
 </script>
+
+<style>
+  .profile-switcher {
+    position: relative;
+  }
+
+  .profile-trigger {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .profile-caret {
+    width: 0.58rem;
+    height: 0.4rem;
+    margin-left: -0.08rem;
+    flex: 0 0 auto;
+    color: var(--muted);
+    transform: translateY(0.12rem);
+    transition: transform 180ms ease;
+  }
+
+  .profile-trigger[aria-expanded="true"] .profile-caret {
+    transform: translateY(0.12rem) rotate(180deg);
+  }
+
+  .profile-menu {
+    position: absolute;
+    top: calc(100% + 0.65rem);
+    left: 0;
+    z-index: 80;
+    width: max-content;
+    min-width: 13.5rem;
+    padding: 0.35rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, var(--paper) 96%, transparent);
+    box-shadow: 0 14px 32px rgb(15 23 42 / 14%);
+    backdrop-filter: blur(14px);
+  }
+
+  .profile-option {
+    display: block;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.55rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 560;
+    text-decoration: none;
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  .profile-option:hover,
+  .profile-option:focus-visible {
+    background: var(--paper-soft);
+    color: var(--text);
+  }
+
+  .profile-option.active {
+    color: var(--text);
+  }
+</style>

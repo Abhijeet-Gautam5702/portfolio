@@ -1,0 +1,18 @@
+---
+import BuilderLayout from "../../layouts/BuilderLayout.astro";
+import { goalYears } from "../../data/builder";
+---
+
+<BuilderLayout title="Goals" description="The goals guiding Abhijeet Gautam's solo-builder journey.">
+  <section class="year-list" aria-label="Goals by year">
+    {goalYears.map((year) => (
+      <a class="year-card" href={`/builder/goals/${year.year}`}>{year.year}</a>
+    ))}
+  </section>
+</BuilderLayout>
+
+<style>
+  .year-list { margin: 2rem 0 var(--section-gap); border-top: 1px solid var(--line); }
+  .year-card { display: block; padding: 1.35rem 0; border-bottom: 1px solid var(--line); color: var(--text); font-size: clamp(3.2rem, 8vw, 6.5rem); font-weight: 730; letter-spacing: -.09em; line-height: .88; text-decoration: none; transition: color 180ms ease, padding-left 180ms ease; }
+  .year-card:hover, .year-card:focus-visible { padding-left: .6rem; color: var(--accent); }
+</style>

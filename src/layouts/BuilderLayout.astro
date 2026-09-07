@@ -1,0 +1,37 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+---
+
+<BaseLayout {...Astro.props} headerVariant="builder" footerVariant="builder" hideDock>
+  <div class="builder-shell">
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  :global(.builder-site-shell) {
+    --accent: #f28a2d;
+    --label: #e6781d;
+  }
+
+  .builder-shell :global(.heading-highlight) {
+    color: var(--accent);
+  }
+
+  :global([data-theme="dark"]) .builder-site-shell {
+    --accent: #ffd3a5;
+    --label: #ffe0c3;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme="light"])) .builder-site-shell {
+      --accent: #ffd3a5;
+      --label: #ffe0c3;
+    }
+  }
+</style>

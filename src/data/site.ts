@@ -27,7 +27,6 @@ export const site = {
 export const socials = [
   { label: "Resume", href: "/engineer/resume", icon: "resume" },
   { label: "Mail", href: `mailto:${site.email}`, icon: "mail" },
-  { label: "X", href: "https://x.com/abhijeet_gautam", icon: "x" },
   {
     label: "LinkedIn",
     href: "https://linkedin.com/in/abhijeet-gautam-a413b1211",

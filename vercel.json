@@ -2,11 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
-      "source": "/",
-      "destination": "/engineer/home",
-      "statusCode": 301
-    },
-    {
       "source": "/home",
       "destination": "/engineer/home",
       "statusCode": 301
