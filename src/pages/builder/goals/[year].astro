@@ -1,0 +1,76 @@
+---
+import BuilderLayout from "../../../layouts/BuilderLayout.astro";
+import { goalYears } from "../../../data/builder";
+
+export function getStaticPaths() {
+  return goalYears.map((goalYear) => ({
+    params: { year: goalYear.year },
+    props: { goalYear },
+  }));
+}
+
+const { goalYear } = Astro.props;
+---
+
+<BuilderLayout
+  title={`${goalYear.year} Goals`}
+  description={`Goals and progress for ${goalYear.year}.`}
+>
+  <section class="goals-title">
+    <h1>{goalYear.year}</h1>
+  </section>
+
+  <ol class="goals-list">
+    {goalYear.goals.map((goal) => (
+      <li class:list={{ completed: goal.completed }}>
+        <span class="goal-status" aria-label={goal.completed ? "Completed" : "Not completed"}>
+          {goal.completed ? "✓" : ""}
+        </span>
+        <div class="goal-content">
+          {
+            goal.href ? (
+              <a class="goal-text" href={goal.href}>{goal.text}</a>
+            ) : (
+              <p class="goal-text">{goal.text}</p>
+            )
+          }
+          {
+            goal.subtasks && (
+              <ul class="subtasks" aria-label={`Subtasks for ${goal.text}`}>
+                {goal.subtasks.map((subtask) => (
+                  <li class:list={{ completed: subtask.completed }}>
+                    {
+                      subtask.href ? (
+                        <a class="subtask-text" href={subtask.href}>{subtask.text}</a>
+                      ) : (
+                        <span class="subtask-text">{subtask.text}</span>
+                      )
+                    }
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+      </li>
+    ))}
+  </ol>
+</BuilderLayout>
+
+<style>
+  .goals-title { margin-top: 2rem; }
+  .goals-title h1 { margin: 0; color: var(--accent); font-size: clamp(3.2rem, 8vw, 6.5rem); letter-spacing: -.09em; line-height: .88; }
+  .goals-list { margin: 2rem 0 var(--section-gap); padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .goals-list li { display: flex; align-items: center; gap: 1rem; padding: 1.35rem 0; border-bottom: 1px solid var(--line); }
+  .goal-status { display: grid; width: 1.35rem; height: 1.35rem; flex: 0 0 1.35rem; align-self: flex-start; margin-top: .12rem; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--paper); font-size: .78rem; font-weight: 800; }
+  .goal-content { flex: 1 1 auto; min-width: 0; }
+  .goal-text { display: block; margin: 0; color: var(--text); font-size: clamp(1.05rem, 2vw, 1.3rem); letter-spacing: -.025em; line-height: 1.4; }
+  a.goal-text, a.subtask-text { text-decoration-line: underline; text-decoration-color: currentColor; text-decoration-thickness: 1px; text-underline-offset: .18em; transition: color 160ms ease, text-decoration-color 160ms ease, text-decoration-thickness 160ms ease; }
+  a.goal-text:hover, a.goal-text:focus-visible, a.subtask-text:hover, a.subtask-text:focus-visible { color: var(--accent); text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+  .goals-list .completed .goal-status { border-color: var(--accent); background: var(--accent); }
+  .goals-list > .completed > .goal-content > .goal-text { color: var(--muted); text-decoration: line-through; text-decoration-color: currentColor; text-decoration-thickness: 1.5px; }
+  .subtasks { display: grid; gap: .55rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .subtasks li { display: block; padding: 0; border: 0; border-bottom: 0; color: var(--muted); font-size: .95rem; line-height: 1.4; }
+  .subtask-text { color: inherit; }
+  @media (max-width: 560px) { .goals-list li { gap: .75rem; } .goal-status { width: 1.3rem; height: 1.3rem; flex-basis: 1.3rem; } }
+</style>

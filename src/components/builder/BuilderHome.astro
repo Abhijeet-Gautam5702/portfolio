@@ -1,76 +1,190 @@
-<section class="page-hero builder-hero">
-  <p class="eyebrow">Solo builder</p>
-  <h1>
-    Making useful things, <span class="heading-highlight"
-      >one step at a time.</span>
-  </h1>
-  <p class="page-description">
-    A space for the products I’m exploring, the lessons I’m collecting, and the
-    goals that keep me moving.
-  </p>
-</section>
+---
+import { builderProducts } from "../../data/builder";
+import SectionHeading from "../common/SectionHeading.astro";
+---
 
-<section class="builder-links" aria-label="Explore builder work">
-  <a href="/builder/products">
-    <span>01</span>
-    <div>
-      <h2>Products</h2><p>
-        Things I’m shaping from an idea into something useful.
+<section class="home-hero">
+  <div class="home-hero-grid">
+    <div class="home-hero-copy">
+      <a
+        class="status-pill builder-x-profile"
+        href="https://x.com/abhijeet_gautam"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>Follow my journey on X</span>
+      </a>
+      <h1>
+        Making useful things, <span class="heading-highlight"
+          >one step at a time.</span>
+      </h1>
+      <p class="hero-description">
+        I’m exploring small ideas, turning the promising ones into products,
+        and learning from every launch along the way.
       </p>
     </div>
-  </a>
-  <a href="/builder/goals">
-    <span>02</span>
-    <div>
-      <h2>Goals</h2><p>The direction, experiments, and milestones ahead.</p>
+    <div class="hero-portrait">
+      <img
+        src="https://github.com/Abhijeet-Gautam5702.png"
+        alt="Abhijeet Gautam"
+        width="460"
+        height="460"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <p class="portrait-caption">Products · Experiments · Learning</p>
     </div>
-  </a>
+  </div>
+</section>
+
+<section
+  class="products-section project-gallery"
+  aria-labelledby="products-heading"
+>
+  <div id="products-heading">
+    <SectionHeading
+      eyebrow="Launched products"
+      title="Products I&apos;ve built and shipped."
+      highlight="shipped."
+    />
+  </div>
+  <div class="products-grid">
+    {
+      builderProducts.map((product) => (
+        <a
+          class="product-card"
+          href={product.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="product-media">
+            {
+              product.media.type === "image" ? (
+                <img src={product.media.src} alt={product.media.alt} loading="lazy" />
+              ) : (
+                <video
+                  src={product.media.src}
+                  poster={product.media.poster}
+                  muted
+                  autoplay
+                  loop
+                  playsinline
+                  aria-label={`${product.name} product preview`}
+                />
+              )
+            }
+          </div>
+          <div class="product-title">
+            <img src={product.icon.src} alt={product.icon.alt} width="36" height="36" />
+            <h3>{product.name}</h3>
+          </div>
+        </a>
+      ))
+    }
+  </div>
 </section>
 
 <style>
-  .builder-hero {
-    padding-bottom: 3.25rem;
+  .builder-x-profile {
+    color: var(--green);
+    border-color: color-mix(in srgb, var(--green) 24%, transparent);
+    background: color-mix(in srgb, var(--green) 8%, transparent);
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 160ms ease;
   }
-  .builder-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+  .builder-x-profile::before {
+    background: currentColor;
+    box-shadow: none;
+    animation: none;
+  }
+  .builder-x-profile:hover,
+  .builder-x-profile:focus-visible {
+    background: color-mix(in srgb, var(--green) 14%, transparent);
+    transform: translateY(-1px);
+  }
+  .products-section {
     padding-bottom: var(--section-gap);
   }
-  .builder-links a {
-    display: flex;
-    min-height: 14rem;
-    gap: 1.1rem;
-    padding: 1.5rem;
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    justify-content: start;
+  }
+  .product-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 2198 / 1534;
+    overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: 1.25rem;
-    background: var(--paper-soft);
+    border-radius: 1.15rem;
+    background: #111;
+    box-shadow: 0 10px 24px rgb(15 23 42 / 12%);
     text-decoration: none;
     transition:
       transform 180ms ease,
       border-color 180ms ease;
   }
-  .builder-links a:hover {
+  .product-card:hover,
+  .product-card:focus-visible {
     border-color: var(--accent);
+    box-shadow: 0 15px 28px rgb(15 23 42 / 15%);
     transform: translateY(-3px);
   }
-  .builder-links span {
-    color: var(--label);
-    font-size: 0.82rem;
-    font-weight: 700;
+  .product-title {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    z-index: 1;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 4.5rem 1rem 0.95rem;
+    background: linear-gradient(to top, rgb(0 0 0 / 90%) 0%, rgb(0 0 0 / 55%) 44%, transparent 100%);
+    color: #fff;
   }
-  h2 {
+  .product-title img {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+  .product-title h3 {
     margin: 0;
-    font-size: 1.5rem;
+    color: inherit;
+    font-size: 1.08rem;
+    font-weight: 700;
     letter-spacing: -0.04em;
   }
-  p {
-    color: var(--muted);
-    line-height: 1.6;
+  .product-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #111;
+  }
+  .product-media img,
+  .product-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 300ms ease;
+  }
+  .product-card:hover .product-media img,
+  .product-card:hover .product-media video {
+    transform: scale(1.025);
+  }
+  @media (max-width: 900px) {
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
   @media (max-width: 640px) {
-    .builder-links {
+    .products-grid {
       grid-template-columns: 1fr;
+      max-width: 22rem;
     }
   }
 </style>

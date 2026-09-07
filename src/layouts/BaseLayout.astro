@@ -22,6 +22,7 @@ interface Props {
   noindex?: boolean;
   fullBleed?: boolean;
   hideDock?: boolean;
+  hideFooter?: boolean;
   headerVariant?: "engineer" | "builder";
 }
 
@@ -84,7 +85,7 @@ gtag("config", ${JSON.stringify(measurementId)});`
           <main id="main-content">
             <slot />
           </main>
-          <Footer />
+          {!props.hideFooter && <Footer />}
         </div>
       )
     }
