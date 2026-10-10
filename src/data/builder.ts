@@ -67,7 +67,8 @@ export const goalsByYear: Record<string, GoalsYear> = {
         text: "Launch at least 2 products",
         completed: false,
         subtasks: [
-          { text: "trove.fascolabs.com", completed: true, href: "https://trove.fascolabs.com/" }
+          { text: "trove.fascolabs.com", completed: true, href: "https://trove.fascolabs.com/" },
+          { text: "clipdock.fascolabs.com", completed: true, href: "https://clipdock.fascolabs.com/" },
         ],
       }
     ],
