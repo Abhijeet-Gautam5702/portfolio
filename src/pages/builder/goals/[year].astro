@@ -29,7 +29,14 @@ const { goalYear } = Astro.props;
         <div class="goal-content">
           {
             goal.href ? (
-              <a class="goal-text" href={goal.href}>{goal.text}</a>
+              <a
+                class="goal-text"
+                href={goal.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {goal.text}
+              </a>
             ) : (
               <p class="goal-text">{goal.text}</p>
             )
@@ -41,7 +48,14 @@ const { goalYear } = Astro.props;
                   <li class:list={{ completed: subtask.completed }}>
                     {
                       subtask.href ? (
-                        <a class="subtask-text" href={subtask.href}>{subtask.text}</a>
+                        <a
+                          class="subtask-text"
+                          href={subtask.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {subtask.text}
+                        </a>
                       ) : (
                         <span class="subtask-text">{subtask.text}</span>
                       )
